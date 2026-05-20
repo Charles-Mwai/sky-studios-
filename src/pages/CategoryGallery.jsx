@@ -46,16 +46,13 @@ const IntroMasonry = ({ gallery }) => {
         </div>
       </div>
 
-      <div className="flex sm:hidden flex-col items-center gap-3 w-full max-w-[375px] mx-auto">
+      <div className="flex sm:hidden flex-col items-center gap-4 w-full px-4 mx-auto">
         <GalleryPlaceholder width={s1.width} height={s1.height} fullWidth />
         <div
-          className="w-full flex flex-col items-center justify-center text-center px-5 py-10 border border-brand-accent/15"
-          style={{
-            aspectRatio: `${sTitle.width} / ${sTitle.height}`,
-            backgroundColor: "#bfc9c0",
-          }}
+          className="w-full flex flex-col items-center justify-center text-center px-6 py-14 border border-brand-accent/15"
+          style={{ backgroundColor: "#bfc9c0" }}
         >
-          <h2 className="font-serif text-2xl font-light text-brand-text leading-tight text-balance">
+          <h2 className="font-serif text-2xl font-light text-brand-dark leading-tight text-balance">
             {gallery.displayTitle}
           </h2>
           <p className="font-sans text-[9px] tracking-widest uppercase text-black font-bold mt-4">
