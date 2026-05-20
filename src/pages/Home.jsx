@@ -48,22 +48,37 @@ const featuredWorks = [
   },
 ];
 
-const FeaturedTile = ({ work, isMobile = false }) => (
-  <div className="flex flex-col gap-2 sm:gap-2">
+const FeaturedTile = ({ work, isMobile = false, fillColumn = false }) => (
+  <div
+    className={`flex flex-col gap-2 sm:gap-2 ${
+      fillColumn ? "h-full min-h-0 flex-1" : ""
+    }`}
+  >
     <Link
       to={work.to}
-      className="block active:opacity-90"
+      className={`block active:opacity-90 ${
+        fillColumn ? "flex-1 min-h-0" : ""
+      }`}
       aria-label={work.title}
     >
       <ViewfinderContainer
         aspectRatio={
-          isMobile ? work.aspectRatioMobile : work.aspectRatio
+          fillColumn
+            ? "h-full w-full"
+            : isMobile
+              ? work.aspectRatioMobile
+              : work.aspectRatio
         }
         label={`SKY // ${work.title.substring(0, 28)}`}
         technicalInfo={work.technicalInfo}
+        className={fillColumn ? "h-full w-full min-h-0 !aspect-auto" : ""}
       />
     </Link>
-    <div className="text-center md:text-left px-0.5">
+    <div
+      className={`text-center md:text-left px-0.5 shrink-0 ${
+        fillColumn ? "mt-auto" : ""
+      }`}
+    >
       <h4 className="font-serif text-base sm:text-xl md:text-2xl font-light text-brand-text leading-snug text-balance">
         <Link
           to={work.to}
@@ -117,15 +132,15 @@ export const Home = () => {
             ))}
           </div>
 
-          <div className="hidden md:grid md:grid-cols-3 gap-2 md:gap-2.5 lg:gap-3">
-            <div className="flex flex-col gap-2 md:gap-2.5">
+          <div className="hidden md:grid md:grid-cols-3 gap-2 md:gap-2.5 lg:gap-3 items-stretch">
+            <div className="flex flex-col h-full justify-between gap-2 md:gap-2.5">
               <FeaturedTile work={colLeftTop} />
               <FeaturedTile work={colLeftBottom} />
             </div>
-            <div className="flex flex-col justify-center">
-              <FeaturedTile work={colCenter} />
+            <div className="flex flex-col h-full min-h-0">
+              <FeaturedTile work={colCenter} fillColumn />
             </div>
-            <div className="flex flex-col gap-2 md:gap-2.5">
+            <div className="flex flex-col h-full justify-between gap-2 md:gap-2.5">
               <FeaturedTile work={colRightTop} />
               <FeaturedTile work={colRightBottom} />
             </div>

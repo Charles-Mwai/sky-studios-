@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 import CategoryDetail from "./pages/CategoryDetail";
+import CategoryGallery from "./pages/CategoryGallery";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 
@@ -44,6 +45,7 @@ export const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/portraits" element={<CategoryGallery categoryId="portraits" />} />
               <Route path="/portfolio/:categoryId" element={<CategoryDetail />} />
               <Route path="/project/:projectId" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
