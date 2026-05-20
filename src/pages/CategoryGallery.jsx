@@ -31,10 +31,10 @@ const IntroMasonry = ({ gallery }) => {
           style={{
             width: sTitle.width,
             height: sTitle.height,
-            backgroundColor: "#b4d1b6",
+            backgroundColor: "#bfc9c0",
           }}
         >
-          <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-text leading-tight text-balance">
+          <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-dark leading-tight text-balance">
             {gallery.displayTitle}
           </h2>
           <p className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-black font-bold mt-5">
@@ -52,7 +52,7 @@ const IntroMasonry = ({ gallery }) => {
           className="w-full flex flex-col items-center justify-center text-center px-5 py-10 border border-brand-accent/15"
           style={{
             aspectRatio: `${sTitle.width} / ${sTitle.height}`,
-            backgroundColor: "#b4d1b6",
+            backgroundColor: "#bfc9c0",
           }}
         >
           <h2 className="font-serif text-2xl font-light text-brand-text leading-tight text-balance">
