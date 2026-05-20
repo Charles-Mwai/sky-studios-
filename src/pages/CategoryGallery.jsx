@@ -22,10 +22,7 @@ const IntroMasonry = ({ gallery }) => {
 
   return (
     <section className="pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 px-4 sm:px-6">
-      <div
-        className="hidden sm:flex flex-row items-end justify-center gap-3 md:gap-4 mx-auto"
-        style={{ maxWidth: s1.width + sTitle.width + s2.width + 32 }}
-      >
+      <div className="hidden sm:flex flex-row items-end justify-between gap-3 md:gap-4 max-w-[1180px] mx-auto">
         <div className="self-start shrink-0 mt-[100px] md:mt-[110px]">
           <GalleryPlaceholder width={s1.width} height={s1.height} />
         </div>
