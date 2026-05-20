@@ -26,31 +26,42 @@ const IntroMasonry = ({ gallery }) => {
         className="hidden sm:flex flex-row items-end justify-center gap-3 md:gap-4 mx-auto"
         style={{ maxWidth: s1.width + sTitle.width + s2.width + 32 }}
       >
-        <GalleryPlaceholder width={s1.width} height={s1.height} />
+        <div className="self-start shrink-0">
+          <GalleryPlaceholder width={s1.width} height={s1.height} />
+        </div>
         <div
-          className="shrink-0 flex flex-col items-center justify-center text-center px-6 bg-brand-details/60 border border-brand-accent/15"
-          style={{ width: sTitle.width, height: sTitle.height }}
+          className="shrink-0 flex flex-col items-center justify-center text-center px-6 border border-brand-accent/15"
+          style={{
+            width: sTitle.width,
+            height: sTitle.height,
+            backgroundColor: "#b4d1b6",
+          }}
         >
           <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-text leading-tight text-balance">
             {gallery.displayTitle}
           </h2>
-          <p className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-brand-accent mt-5">
+          <p className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-black font-bold mt-5">
             {gallery.scrollLabel}
           </p>
         </div>
-        <GalleryPlaceholder width={s2.width} height={s2.height} />
+        <div className="self-center shrink-0">
+          <GalleryPlaceholder width={s2.width} height={s2.height} />
+        </div>
       </div>
 
       <div className="flex sm:hidden flex-col items-center gap-3 w-full max-w-[375px] mx-auto">
         <GalleryPlaceholder width={s1.width} height={s1.height} fullWidth />
         <div
-          className="w-full flex flex-col items-center justify-center text-center px-5 py-10 bg-brand-details/60 border border-brand-accent/15"
-          style={{ aspectRatio: `${sTitle.width} / ${sTitle.height}` }}
+          className="w-full flex flex-col items-center justify-center text-center px-5 py-10 border border-brand-accent/15"
+          style={{
+            aspectRatio: `${sTitle.width} / ${sTitle.height}`,
+            backgroundColor: "#b4d1b6",
+          }}
         >
           <h2 className="font-serif text-2xl font-light text-brand-text leading-tight text-balance">
             {gallery.displayTitle}
           </h2>
-          <p className="font-sans text-[9px] tracking-widest uppercase text-brand-accent mt-4">
+          <p className="font-sans text-[9px] tracking-widest uppercase text-black font-bold mt-4">
             {gallery.scrollLabel}
           </p>
         </div>
