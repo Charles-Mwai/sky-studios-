@@ -26,7 +26,7 @@ const IntroMasonry = ({ gallery }) => {
         className="hidden sm:flex flex-row items-end justify-center gap-3 md:gap-4 mx-auto"
         style={{ maxWidth: s1.width + sTitle.width + s2.width + 32 }}
       >
-        <div className="self-start shrink-0">
+        <div className="self-start shrink-0 mt-[100px] md:mt-[110px]">
           <GalleryPlaceholder width={s1.width} height={s1.height} />
         </div>
         <div
