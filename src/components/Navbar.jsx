@@ -116,7 +116,7 @@ export const Navbar = () => {
                   to="/portfolio"
                   className="font-sans text-[10px] tracking-widest uppercase px-3 py-2 text-brand-text/75 hover:bg-brand-details hover:text-brand-text transition-all duration-200 border-b border-brand-accent/15 mb-1"
                 >
-                  All Portfolio
+                   
                 </Link>
                 {portfolioCategories.map((cat) => (
                   <Link
