@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import ViewfinderContainer from "../components/ViewfinderContainer";
+import LazyImage from "../components/LazyImage";
 
 const CATEGORIES = [
-  { id: "portraits",    title: "Portraits",            exp: "01", offset: "",       staggerOffset: "" },
-  { id: "fashion",      title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "" },
-  { id: "weddings",     title: "Weddings",             exp: "03", offset: "",       staggerOffset: "" },
-  { id: "corporate",    title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "" },
-  { id: "product",      title: "Product",              exp: "05", offset: "-100px", staggerOffset: "110px" },
-  { id: "landscape",    title: "Wildlife & Landscape", exp: "06", offset: "",       staggerOffset: "110px" },
-  { id: "real-estate",  title: "Real Estate",          exp: "07", offset: "-100px", staggerOffset: "110px" },
-  { id: "drone",        title: "Drone Photography",    exp: "08", offset: "",       staggerOffset: "110px" },
+  { id: "portraits",    title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/DSC_3094.JPG" },
+  { id: "fashion",      title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/DSC08097 (1).jpg" },
+  { id: "weddings",     title: "Weddings",             exp: "03", offset: "",       staggerOffset: "",      image: "/DSC_2529.JPG" },
+  { id: "corporate",    title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/DSC08857.jpg" },
+  { id: "product",      title: "Product",              exp: "05", offset: "-100px", staggerOffset: "110px", image: "/_901141.jpg" },
+  { id: "landscape",    title: "Wildlife & Landscape", exp: "06", offset: "",       staggerOffset: "110px", image: "/DSC_4043 (1).jpg" },
+  { id: "real-estate",  title: "Real Estate",          exp: "07", offset: "-100px", staggerOffset: "110px", image: "/DSC_1208.JPG" },
+  { id: "drone",        title: "Drone Photography",    exp: "08", offset: "",       staggerOffset: "110px", image: "/DJI_0247 (1).jpg" },
 ];
 
 const useIsDesktop = () => {
@@ -42,12 +43,16 @@ const CategoryCard = ({ category }) => {
         aria-label={`View ${category.title} portfolio`}
       >
         <div className="w-full max-w-[280px] md:w-[280px] h-[360px] sm:h-[420px] overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]">
-          <ViewfinderContainer
-            aspectRatio="w-full h-full"
-            label={`SKY // ${category.title.toUpperCase()}`}
-            technicalInfo={`EXP.${category.exp} // 50mm F/2`}
-            className="!aspect-auto w-full h-full"
-          />
+          {category.image ? (
+            <LazyImage src={category.image} alt={category.title} className="w-full h-full" />
+          ) : (
+            <ViewfinderContainer
+              aspectRatio="w-full h-full"
+              label={`SKY // ${category.title.toUpperCase()}`}
+              technicalInfo={`EXP.${category.exp} // 50mm F/2`}
+              className="!aspect-auto w-full h-full"
+            />
+          )}
         </div>
       </Link>
       <h2 className="mt-4">
@@ -89,7 +94,7 @@ export const Portfolio = () => {
           {/* Background block — desktop only */}
           <div
             className="hidden md:block absolute left-0 w-full bottom-0"
-            style={{ backgroundColor: "#e8cdac", top: "210px" }}
+            style={{ backgroundColor: "#bfc9c0", top: "210px" }}
           />
           <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-[140px] gap-y-10 sm:gap-y-12 md:gap-y-[90px] justify-items-center">
             {CATEGORIES.map((cat) => (

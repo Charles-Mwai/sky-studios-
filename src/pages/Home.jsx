@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import ViewfinderContainer from "../components/ViewfinderContainer";
+import LazyImage from "../components/LazyImage";
 
 /** Featured work placeholders — 5-up masonry (Esther home layout) */
 const featuredWorks = [
@@ -12,7 +13,6 @@ const featuredWorks = [
     to: "/portfolio/corporate",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    technicalInfo: "EXP.01 // 50mm F/2",
     imageSrc: "/DSC05913.JPG",
   },
   {
@@ -21,7 +21,6 @@ const featuredWorks = [
     to: "/portfolio/portraits",
     aspectRatio: "aspect-[9/18] md:aspect-[9/19]",
     aspectRatioMobile: "aspect-[4/5]",
-    technicalInfo: "EXP.02 // 85mm F/1.4",
     imageSrc: "/DSC_2052.jpg",
   },
   {
@@ -30,7 +29,6 @@ const featuredWorks = [
     to: "/portfolio/fashion",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    technicalInfo: "EXP.03 // 35mm F/1.8",
     imageSrc: "/_MG_8910.webp",
   },
   {
@@ -39,7 +37,6 @@ const featuredWorks = [
     to: "/portfolio/product",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    technicalInfo: "EXP.04 // 24mm F/4",
     imageSrc: "/DSC07929 (1).jpg",
   },
   {
@@ -48,7 +45,6 @@ const featuredWorks = [
     to: "/portfolio/portraits",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    technicalInfo: "EXP.05 // 90mm F/2.8",
     imageSrc: "/DSC_1191.JPG",
   },
 ];
@@ -60,13 +56,7 @@ const FeaturedTile = ({ work, isMobile = false, width, height }) => (
         className="overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]"
         style={isMobile ? { width: "100%", aspectRatio: "7/9" } : { width, height }}
       >
-        <ViewfinderContainer
-          aspectRatio="w-full h-full"
-          label={`SKY // ${work.title.substring(0, 28)}`}
-          technicalInfo={work.technicalInfo}
-          className="!aspect-auto w-full h-full"
-          imageSrc={work.imageSrc}
-        />
+        <LazyImage src={work.imageSrc} alt={work.title} className="w-full h-full" />
       </div>
     </Link>
     <div className="text-center md:text-left px-0.5">
@@ -145,13 +135,14 @@ export const Home = () => {
         {/* Welcome / bio */}
         <section className="py-10 sm:py-16 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 xl:gap-16 items-center">
-            <div className="border border-brand-accent/15 rounded-[2px] p-5 sm:p-8 md:p-10 lg:p-14 flex flex-col gap-4 sm:gap-5 md:gap-6 order-2 lg:order-1 items-start"
-              style={{ width: "570px", height: "655px", justifyContent: "center", backgroundColor: "#bfc9c0" }}
+            <div
+              className="border border-brand-accent/15 rounded-[2px] p-6 sm:p-10 md:p-12 flex flex-col gap-4 sm:gap-5 order-2 lg:order-1 items-start justify-center w-full lg:w-[570px] lg:h-[655px]"
+              style={{ backgroundColor: "#bfc9c0" }}
             >
               <span className="font-sans text-[9px] sm:text-[10px] tracking-mega uppercase text-brand-accent text-left">
                 Helping brands since 2019
               </span>
-              <h2 className="font-serif text-[1.4rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-left">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-left">
                 Welcome to Sky Studios Photography
               </h2>
               <p className="font-sans text-[13px] sm:text-sm text-brand-muted leading-relaxed font-light text-left">
@@ -165,8 +156,9 @@ export const Home = () => {
             </div>
 
             <div className="flex justify-center items-center order-1 lg:order-2">
-              <div className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 bg-brand-bg shadow-sm"
-                style={{ width: "570px", height: "655px" }}
+              <div
+                className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 bg-brand-bg shadow-sm w-full max-w-[320px] sm:max-w-[420px] lg:w-[570px] lg:max-w-none"
+                style={{ aspectRatio: "570 / 655" }}
               >
                 <ViewfinderContainer
                   aspectRatio="aspect-[2/3]"

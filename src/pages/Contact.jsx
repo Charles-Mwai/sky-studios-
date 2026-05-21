@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useBooking } from "../context/BookingContext";
+import { useBooking } from "../context/useBooking";
 import PageTransition from "../components/PageTransition";
 import { Mail, Phone, Clock, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
 

@@ -20,7 +20,6 @@ const slide = (id, aspect) => ({
 export const portraitGallery = {
   displayTitle: "Portrait Photography",
   scrollLabel: "Scroll for full Gallery",
-  /** Two hero frames before title (Esther: portrait_2, banner_6) */
   intro: [
     slide("photo-1534528741775-53994a69daeb", "portrait"),
     slide("photo-1507003211169-0a1dd7228f2d", "banner"),
@@ -30,9 +29,18 @@ export const portraitGallery = {
    * Row rhythm: S L S L / L L L L / L S L S
    */
   scrollPattern: [
-    "S", "L", "S", "L",
-    "L", "L", "L", "L",
-    "L", "S", "L", "S",
+    { size: "S", src: "/potraits/DSC_78.jpg" },
+    { size: "L", src: "/potraits/DSC_104.jpg" },
+    { size: "S", src: "/potraits/DSC_108.jpg" },
+    { size: "L", src: "/potraits/DSC06195 copy.jpg" },
+    { size: "L", src: "/potraits/DSC09712.JPG" },
+    { size: "L", src: "/potraits/DSC_2062.jpg" },
+    { size: "L", src: "/potraits/DSC_2235.JPG" },
+    { size: "L", src: "/potraits/DSC_2043.JPG" },
+    { size: "L", src: "/potraits/DSC_2043 (1).jpg" },
+    { size: "S", src: "/potraits/DSC_0335.JPG" },
+    { size: "L", src: "/potraits/DSC06123 copy.jpg" },
+    { size: "S", src: "/potraits/DSC06031 copy.jpg" },
   ],
 };
 

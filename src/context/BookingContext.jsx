@@ -1,14 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 const BookingContext = createContext();
 
-export const useBooking = () => {
-  const context = useContext(BookingContext);
-  if (!context) {
-    throw new Error("useBooking must be used within a BookingProvider");
-  }
-  return context;
-};
+export { BookingContext };
 
 export const BookingProvider = ({ children }) => {
   const [inquiries, setInquiries] = useState([]);

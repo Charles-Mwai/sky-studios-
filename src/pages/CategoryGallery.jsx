@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
-import GalleryPlaceholder from "../components/GalleryPlaceholder";
+import LazyImage from "../components/LazyImage";
 import { galleryByCategory } from "../data/galleryLayouts";
 
 /** Intro masonry — header measurements (px) */
 const INTRO_MASONRY = {
   image1: { width: 326, height: 461 },
-  title: { width: 375, height: 682 },
+  title:  { width: 375, height: 682 },
   image2: { width: 332, height: 241 },
 };
 
@@ -22,17 +22,19 @@ const IntroMasonry = ({ gallery }) => {
 
   return (
     <section className="pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 px-4 sm:px-6">
+      {/* Desktop */}
       <div className="hidden sm:flex flex-row items-end justify-between gap-3 md:gap-4 max-w-[1180px] mx-auto">
-        <div className="self-start shrink-0 mt-[100px] md:mt-[110px]">
-          <GalleryPlaceholder width={s1.width} height={s1.height} />
+        <div className="self-start shrink-0 mt-[100px] md:mt-[110px]" style={{ width: s1.width, height: s1.height }}>
+          <LazyImage
+            src="/DSC08096.webp"
+            placeholderSrc="/DSC08096.webp"
+            alt="Portrait photography"
+            className="w-full h-full"
+          />
         </div>
         <div
           className="shrink-0 flex flex-col items-center justify-center text-center px-6 border border-brand-accent/15"
-          style={{
-            width: sTitle.width,
-            height: sTitle.height,
-            backgroundColor: "#bfc9c0",
-          }}
+          style={{ width: sTitle.width, height: sTitle.height, backgroundColor: "#bfc9c0" }}
         >
           <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-dark leading-tight text-balance">
             {gallery.displayTitle}
@@ -41,15 +43,28 @@ const IntroMasonry = ({ gallery }) => {
             {gallery.scrollLabel}
           </p>
         </div>
-        <div className="self-center shrink-0">
-          <GalleryPlaceholder width={s2.width} height={s2.height} />
+        <div className="self-center shrink-0" style={{ width: s2.width, height: s2.height }}>
+          <LazyImage
+            src="/DSC06197 (1) (1).jpg"
+            placeholderSrc="/DSC06197 (1) (1).jpg"
+            alt="Portrait photography"
+            className="w-full h-full"
+          />
         </div>
       </div>
 
-      <div className="flex sm:hidden flex-col items-center gap-4 w-full px-4 mx-auto">
-        <GalleryPlaceholder width={s1.width} height={s1.height} fullWidth />
+      {/* Mobile */}
+      <div className="flex sm:hidden flex-col items-center gap-4 w-full px-2 mx-auto">
+        <div className="w-full" style={{ aspectRatio: `${s1.width} / ${s1.height}` }}>
+          <LazyImage
+            src="/DSC08096.webp"
+            placeholderSrc="/DSC08096.webp"
+            alt="Portrait photography"
+            className="w-full h-full"
+          />
+        </div>
         <div
-          className="w-full flex flex-col items-center justify-center text-center px-6 py-14 border border-brand-accent/15"
+          className="w-full flex flex-col items-center justify-center text-center px-6 py-14 border border-brand-accent/15 min-h-[200px]"
           style={{ backgroundColor: "#bfc9c0" }}
         >
           <h2 className="font-serif text-2xl font-light text-brand-dark leading-tight text-balance">
@@ -59,25 +74,40 @@ const IntroMasonry = ({ gallery }) => {
             {gallery.scrollLabel}
           </p>
         </div>
-        <GalleryPlaceholder width={s2.width} height={s2.height} fullWidth />
+        <div className="w-full" style={{ aspectRatio: `${s2.width} / ${s2.height}` }}>
+          <LazyImage
+            src="/DSC06197 (1) (1).jpg"
+            placeholderSrc="/DSC06197 (1) (1).jpg"
+            alt="Portrait photography"
+            className="w-full h-full"
+          />
+        </div>
       </div>
     </section>
   );
 };
 
-const GalleryMasonryTile = ({ size, index }) => (
+const GalleryMasonryTile = ({ size, index, src }) => (
   <div
-    className={`w-[280px] max-w-full shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02]`}
+    className={`w-full max-w-[280px] shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02]`}
   >
-    <div
-      className="w-full h-full bg-brand-details/70 border border-brand-accent/15 object-cover"
-      role="img"
-      aria-label={`Gallery image ${index + 1}`}
-    />
+    {src ? (
+      <LazyImage
+        src={src}
+        placeholderSrc={src}
+        alt={`Gallery image ${index + 1}`}
+        className="w-full h-full"
+      />
+    ) : (
+      <div
+        className="w-full h-full bg-brand-details/70 border border-brand-accent/15"
+        role="img"
+        aria-label={`Gallery image ${index + 1}`}
+      />
+    )}
   </div>
 );
 
-/** Row-major pattern → vertical columns (uniform column bottoms, no row gap holes) */
 const patternToColumns = (pattern, columnCount) => {
   const columns = Array.from({ length: columnCount }, () => []);
   const rowCount = Math.ceil(pattern.length / columnCount);
@@ -86,7 +116,7 @@ const patternToColumns = (pattern, columnCount) => {
     for (let r = 0; r < rowCount; r++) {
       const idx = r * columnCount + c;
       if (idx < pattern.length) {
-        columns[c].push({ size: pattern[idx], index: idx });
+        columns[c].push({ size: pattern[idx].size, src: pattern[idx].src, index: idx });
       }
     }
   }
@@ -96,8 +126,8 @@ const patternToColumns = (pattern, columnCount) => {
 
 const MasonryColumn = ({ tiles }) => (
   <div className="flex flex-col gap-[20px]">
-    {tiles.map(({ size, index }) => (
-      <GalleryMasonryTile key={index} size={size} index={index} />
+    {tiles.map(({ size, src, index }) => (
+      <GalleryMasonryTile key={index} size={size} src={src} index={index} />
     ))}
   </div>
 );
@@ -111,24 +141,24 @@ const ScrollGalleryMasonry = ({ pattern }) => {
 
   return (
     <section className="w-full px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20">
-      {/* Desktop — 4 columns, stacked tiles (row 3 L in cols 1 & 3 tuck under row 2) */}
+      {/* Desktop — 4 columns */}
       <div className="hidden lg:flex gap-[20px] max-w-[1180px] mx-auto justify-center items-end">
         {columns4.map((col, colIdx) => (
           <MasonryColumn key={colIdx} tiles={col} />
         ))}
       </div>
 
-      {/* Tablet — 2 columns (paired stacks) */}
+      {/* Tablet — 2 columns */}
       <div className="hidden md:flex lg:hidden gap-[20px] max-w-[1180px] mx-auto justify-center items-end">
         {columns2.map((col, colIdx) => (
           <MasonryColumn key={colIdx} tiles={col} />
         ))}
       </div>
 
-      {/* Mobile — single column */}
-      <div className="flex md:hidden flex-col gap-[20px] max-w-[280px] mx-auto items-center">
-        {pattern.map((size, index) => (
-          <GalleryMasonryTile key={index} size={size} index={index} />
+      {/* Mobile — single column, fluid width */}
+      <div className="flex md:hidden flex-col gap-[20px] w-full max-w-[320px] mx-auto items-center">
+        {pattern.map(({ size, src }, index) => (
+          <GalleryMasonryTile key={index} size={size} src={src} index={index} />
         ))}
       </div>
     </section>
@@ -147,10 +177,7 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
       <PageTransition>
         <div className="min-h-screen bg-brand-bg flex flex-col items-center justify-center p-6 text-center">
           <h1 className="font-serif text-3xl font-light mb-4">Gallery not found</h1>
-          <Link
-            to="/portfolio"
-            className="font-sans text-2xs tracking-widest uppercase text-brand-accent"
-          >
+          <Link to="/portfolio" className="font-sans text-2xs tracking-widest uppercase text-brand-accent">
             Back to portfolio
           </Link>
         </div>
@@ -171,9 +198,7 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 py-10 sm:py-14 md:py-16">
               <div className="flex flex-col items-center text-center gap-2 py-6 sm:py-0 border-b border-brand-accent/15 sm:border-b-0">
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">
-                  Portfolio
-                </h2>
+                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">Portfolio</h2>
                 <Link
                   to="/portfolio"
                   className="font-sans text-[9px] sm:text-[10px] tracking-widest uppercase text-brand-accent hover:text-brand-text transition-colors duration-300 py-2 px-3 min-h-[44px] inline-flex items-center justify-center"
@@ -181,11 +206,8 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
                   View My Recent Work
                 </Link>
               </div>
-
               <div className="flex flex-col items-center text-center gap-2 py-6 sm:py-0 sm:border-l sm:border-brand-accent/20 sm:pl-8">
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">
-                  Get in Touch
-                </h2>
+                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">Get in Touch</h2>
                 <Link
                   to="/contact"
                   className="font-sans text-[9px] sm:text-[10px] tracking-widest uppercase text-brand-accent hover:text-brand-text transition-colors duration-300 py-2 px-3 min-h-[44px] inline-flex items-center justify-center"
