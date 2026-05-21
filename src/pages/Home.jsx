@@ -13,7 +13,7 @@ const featuredWorks = [
     to: "/portfolio/corporate",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    imageSrc: "/DSC05913.JPG",
+    imageSrc: "/optimised/DSC05913.webp",
   },
   {
     title: "Consectetur adipiscing elit",
@@ -21,7 +21,7 @@ const featuredWorks = [
     to: "/portfolio/portraits",
     aspectRatio: "aspect-[9/18] md:aspect-[9/19]",
     aspectRatioMobile: "aspect-[4/5]",
-    imageSrc: "/DSC_2052.jpg",
+    imageSrc: "/optimised/DSC_2052.webp",
   },
   {
     title: "Sed do eiusmod tempor",
@@ -29,7 +29,7 @@ const featuredWorks = [
     to: "/portfolio/fashion",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    imageSrc: "/_MG_8910.webp",
+    imageSrc: "/optimised/_MG_8910.webp",
   },
   {
     title: "Incididunt ut labore et dolore",
@@ -37,7 +37,7 @@ const featuredWorks = [
     to: "/portfolio/product",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    imageSrc: "/DSC07929 (1).jpg",
+    imageSrc: "/optimised/DSC07929 (1).webp",
   },
   {
     title: "Magna aliqua ut enim ad minim",
@@ -45,7 +45,7 @@ const featuredWorks = [
     to: "/portfolio/portraits",
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
-    imageSrc: "/DSC_1191.JPG",
+    imageSrc: "/optimised/DSC_1191.webp",
   },
 ];
 

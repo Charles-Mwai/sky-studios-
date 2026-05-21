@@ -6,14 +6,14 @@ import ViewfinderContainer from "../components/ViewfinderContainer";
 import LazyImage from "../components/LazyImage";
 
 const CATEGORIES = [
-  { id: "portraits",    title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/DSC_3094.JPG" },
-  { id: "fashion",      title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/DSC08097 (1).jpg" },
-  { id: "weddings",     title: "Weddings",             exp: "03", offset: "",       staggerOffset: "",      image: "/DSC_2529.JPG" },
-  { id: "corporate",    title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/DSC08857.jpg" },
-  { id: "product",      title: "Product",              exp: "05", offset: "-100px", staggerOffset: "110px", image: "/_901141.jpg" },
-  { id: "landscape",    title: "Wildlife & Landscape", exp: "06", offset: "",       staggerOffset: "110px", image: "/DSC_4043 (1).jpg" },
-  { id: "real-estate",  title: "Real Estate",          exp: "07", offset: "-100px", staggerOffset: "110px", image: "/DSC_1208.JPG" },
-  { id: "drone",        title: "Drone Photography",    exp: "08", offset: "",       staggerOffset: "110px", image: "/DJI_0247 (1).jpg" },
+  { id: "portraits",    title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/optimised/DSC_3094.webp" },
+  { id: "fashion",      title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08097 (1).webp" },
+  { id: "weddings",     title: "Weddings",             exp: "03", offset: "",       staggerOffset: "",      image: "/optimised/DSC_2529.webp" },
+  { id: "corporate",    title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08857.webp" },
+  { id: "product",      title: "Product",              exp: "05", offset: "-100px", staggerOffset: "110px", image: "/optimised/_901141.webp" },
+  { id: "landscape",    title: "Wildlife & Landscape", exp: "06", offset: "",       staggerOffset: "110px", image: "/optimised/DSC_4043 (1).webp" },
+  { id: "real-estate",  title: "Real Estate",          exp: "07", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_1208.webp" },
+  { id: "drone",        title: "Drone Photography",    exp: "08", offset: "",       staggerOffset: "110px", image: "/optimised/DJI_0247 (1).webp" },
 ];
 
 const useIsDesktop = () => {

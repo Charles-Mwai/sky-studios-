@@ -29,18 +29,18 @@ export const portraitGallery = {
    * Row rhythm: S L S L / L L L L / L S L S
    */
   scrollPattern: [
-    { size: "S", src: "/potraits/DSC_78.jpg" },
-    { size: "L", src: "/potraits/DSC_104.jpg" },
-    { size: "S", src: "/potraits/DSC_108.jpg" },
-    { size: "L", src: "/potraits/DSC06195 copy.jpg" },
-    { size: "L", src: "/potraits/DSC09712.JPG" },
-    { size: "L", src: "/potraits/DSC_2062.jpg" },
-    { size: "L", src: "/potraits/DSC_2235.JPG" },
-    { size: "L", src: "/potraits/DSC_2043.JPG" },
-    { size: "L", src: "/potraits/DSC_2043 (1).jpg" },
-    { size: "S", src: "/potraits/DSC_0335.JPG" },
-    { size: "L", src: "/potraits/DSC06123 copy.jpg" },
-    { size: "S", src: "/potraits/DSC06031 copy.jpg" },
+    { size: "S", src: "/optimised/DSC_78.webp" },
+    { size: "L", src: "/optimised/DSC_104.webp" },
+    { size: "S", src: "/optimised/DSC_108.webp" },
+    { size: "L", src: "/optimised/DSC06195 copy.webp" },
+    { size: "L", src: "/optimised/DSC09712.webp" },
+    { size: "L", src: "/optimised/DSC_2062.webp" },
+    { size: "L", src: "/optimised/DSC_2235.webp" },
+    { size: "L", src: "/optimised/DSC_2043.webp" },
+    { size: "L", src: "/optimised/DSC_2043 (1).webp" },
+    { size: "S", src: "/optimised/DSC_0335.webp" },
+    { size: "L", src: "/optimised/DSC06123 copy.webp" },
+    { size: "S", src: "/optimised/DSC06031 copy.webp" },
   ],
 };
 
