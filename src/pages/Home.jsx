@@ -48,42 +48,24 @@ const featuredWorks = [
   },
 ];
 
-const FeaturedTile = ({ work, isMobile = false, fillColumn = false }) => (
-  <div
-    className={`flex flex-col gap-2 sm:gap-2 ${
-      fillColumn ? "h-full min-h-0 flex-1" : ""
-    }`}
-  >
-    <Link
-      to={work.to}
-      className={`block active:opacity-90 ${
-        fillColumn ? "flex-1 min-h-0" : ""
-      }`}
-      aria-label={work.title}
-    >
-      <ViewfinderContainer
-        aspectRatio={
-          fillColumn
-            ? "h-full w-full"
-            : isMobile
-              ? work.aspectRatioMobile
-              : work.aspectRatio
-        }
-        label={`SKY // ${work.title.substring(0, 28)}`}
-        technicalInfo={work.technicalInfo}
-        className={fillColumn ? "h-full w-full min-h-0 !aspect-auto" : ""}
-      />
+const FeaturedTile = ({ work, isMobile = false, width, height }) => (
+  <div className="flex flex-col gap-2">
+    <Link to={work.to} className="block active:opacity-90" aria-label={work.title}>
+      <div
+        className="overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]"
+        style={isMobile ? { width: "100%", aspectRatio: "7/9" } : { width, height }}
+      >
+        <ViewfinderContainer
+          aspectRatio="w-full h-full"
+          label={`SKY // ${work.title.substring(0, 28)}`}
+          technicalInfo={work.technicalInfo}
+          className="!aspect-auto w-full h-full"
+        />
+      </div>
     </Link>
-    <div
-      className={`text-center md:text-left px-0.5 shrink-0 ${
-        fillColumn ? "mt-auto" : ""
-      }`}
-    >
+    <div className="text-center md:text-left px-0.5">
       <h4 className="font-serif text-base sm:text-xl md:text-2xl font-light text-brand-text leading-snug text-balance">
-        <Link
-          to={work.to}
-          className="inline-block py-1 hover:text-brand-accent transition-colors duration-300"
-        >
+        <Link to={work.to} className="inline-block py-1 hover:text-brand-accent transition-colors duration-300">
           {work.title}
         </Link>
       </h4>
@@ -132,17 +114,24 @@ export const Home = () => {
             ))}
           </div>
 
-          <div className="hidden md:grid md:grid-cols-3 gap-2 md:gap-2.5 lg:gap-3 items-stretch">
-            <div className="flex flex-col h-full justify-between gap-2 md:gap-2.5">
-              <FeaturedTile work={colLeftTop} />
-              <FeaturedTile work={colLeftBottom} />
+          <div className="hidden md:flex flex-row items-start justify-center gap-3 lg:gap-4">
+            {/* Left column */}
+            <div className="flex flex-col">
+              <FeaturedTile work={colLeftTop}    width="330px" height="315px" />
+              <div style={{ marginTop: "56px" }}>
+                <FeaturedTile work={colLeftBottom} width="330px" height="315px" />
+              </div>
             </div>
-            <div className="flex flex-col h-full min-h-0">
-              <FeaturedTile work={colCenter} fillColumn />
+            {/* Center column */}
+            <div>
+              <FeaturedTile work={colCenter} width="470px" height="750px" />
             </div>
-            <div className="flex flex-col h-full justify-between gap-2 md:gap-2.5">
-              <FeaturedTile work={colRightTop} />
-              <FeaturedTile work={colRightBottom} />
+            {/* Right column */}
+            <div className="flex flex-col">
+              <FeaturedTile work={colRightTop}    width="330px" height="315px" />
+              <div style={{ marginTop: "56px" }}>
+                <FeaturedTile work={colRightBottom} width="330px" height="315px" />
+              </div>
             </div>
           </div>
         </section>
@@ -150,14 +139,16 @@ export const Home = () => {
         {/* Welcome / bio */}
         <section className="py-10 sm:py-16 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 xl:gap-16 items-center">
-            <div className="bg-brand-details/80 border border-brand-accent/15 rounded-[2px] p-5 sm:p-8 md:p-10 lg:p-14 flex flex-col gap-4 sm:gap-5 md:gap-6 order-2 lg:order-1 text-center lg:text-left">
-              <span className="font-sans text-[9px] sm:text-[10px] tracking-mega uppercase text-brand-accent">
+            <div className="border border-brand-accent/15 rounded-[2px] p-5 sm:p-8 md:p-10 lg:p-14 flex flex-col gap-4 sm:gap-5 md:gap-6 order-2 lg:order-1 items-start"
+              style={{ width: "570px", height: "655px", justifyContent: "center", backgroundColor: "#bfc9c0" }}
+            >
+              <span className="font-sans text-[9px] sm:text-[10px] tracking-mega uppercase text-brand-accent text-left">
                 Helping brands since 2019
               </span>
-              <h2 className="font-serif text-[1.4rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-balance">
+              <h2 className="font-serif text-[1.4rem] sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-left">
                 Welcome to Sky Studios Photography
               </h2>
-              <p className="font-sans text-[13px] sm:text-sm text-brand-muted leading-relaxed font-light text-pretty">
+              <p className="font-sans text-[13px] sm:text-sm text-brand-muted leading-relaxed font-light text-left">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                 ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -167,8 +158,10 @@ export const Home = () => {
               </p>
             </div>
 
-            <div className="flex justify-center items-center order-1 lg:order-2 px-2 sm:px-8 lg:px-4">
-              <div className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[360px] aspect-[2/3] overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 bg-brand-bg shadow-sm">
+            <div className="flex justify-center items-center order-1 lg:order-2">
+              <div className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 bg-brand-bg shadow-sm"
+                style={{ width: "570px", height: "655px" }}
+              >
                 <ViewfinderContainer
                   aspectRatio="aspect-[2/3]"
                   shape="pill"
