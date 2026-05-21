@@ -99,6 +99,20 @@ export const Home = () => {
             >
               Subtle Beauty, Bold Impact
             </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 sm:mt-8"
+            >
+              <Link
+                to="/portfolio"
+                className="font-sans text-[10px] sm:text-xs tracking-widest uppercase border border-brand-text/40 px-6 py-3 text-brand-text hover:bg-brand-dark hover:text-brand-bg hover:border-brand-dark transition-all duration-500 ease-cinematic inline-flex items-center justify-center min-h-[44px]"
+              >
+                View Portfolio
+              </Link>
+            </motion.div>
           </div>
         </section>
 
