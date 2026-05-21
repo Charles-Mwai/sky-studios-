@@ -1,5 +1,6 @@
 import React from "react";
 import { Camera } from "lucide-react";
+import LazyImage from "./LazyImage";
 
 export const ViewfinderContainer = ({
   aspectRatio = "aspect-[3/2]",
@@ -7,7 +8,9 @@ export const ViewfinderContainer = ({
   technicalInfo = "50mm F/2.8 ISO 100",
   shape = "rect", // "rect" or "pill"
   className = "",
-  onClick
+  onClick,
+  imageSrc,
+  placeholderSrc
 }) => {
   // Shape-specific styling
   const containerClass = shape === "pill" 
@@ -19,8 +22,19 @@ export const ViewfinderContainer = ({
       onClick={onClick}
       className={`group relative select-none bg-brand-details border border-brand-accent/20 cursor-pointer overflow-hidden transition-all duration-700 ease-cinematic hover:border-brand-accent/50 ${aspectRatio} ${className}`}
     >
-      {/* Background Subtle Grid Texture / Gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-tr from-brand-details via-brand-bg/40 to-brand-details transition-transform duration-1000 ease-cinematic group-hover:scale-105 ${containerClass}`} />
+      {/* Background Subtle Grid Texture / Gradient or Image */}
+      {imageSrc ? (
+        <div className={`absolute inset-0 transition-transform duration-1000 ease-cinematic group-hover:scale-105 ${containerClass}`}>
+          <LazyImage
+            src={imageSrc}
+            placeholderSrc={placeholderSrc || imageSrc}
+            alt={label}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className={`absolute inset-0 bg-gradient-to-tr from-brand-details via-brand-bg/40 to-brand-details transition-transform duration-1000 ease-cinematic group-hover:scale-105 ${containerClass}`} />
+      )}
       
       {/* Viewfinder Content Frame */}
       <div className={`absolute inset-0 p-4 sm:p-6 flex flex-col justify-between z-10 ${shape === "pill" ? "rounded-full" : ""}`}>

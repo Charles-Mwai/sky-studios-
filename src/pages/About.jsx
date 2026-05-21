@@ -55,7 +55,7 @@ export const About = () => {
                   Our Director’s career began in documentary photojournalism, traveling through East Asia and Western Europe to archive remote architectural remnants. This structural foundation heavily influences our current fashion campaigns and editorial real estate portfolios. Symmetrical alignment, high contrast ratios, and brutalist clean layouts dictate our visual architecture.
                 </p>
                 <p>
-                  Today, Sky Studios operates out of New York and Tokyo, serving corporate innovators, avant-garde apparel designers, and private collectors. We maintain a strict boundary on client numbers to ensure each project is handled with immersive, hands-on artistry.
+                  Today, Sky Studios operates out of Nairobi, serving corporate innovators, avant-garde apparel designers, and private collectors. We maintain a strict boundary on client numbers to ensure each project is handled with immersive, hands-on artistry.
                 </p>
               </div>
 

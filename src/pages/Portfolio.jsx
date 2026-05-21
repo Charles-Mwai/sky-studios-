@@ -89,7 +89,7 @@ export const Portfolio = () => {
           {/* Background block — desktop only */}
           <div
             className="hidden md:block absolute left-0 w-full bottom-0"
-            style={{ backgroundColor: "#bfc9c0", top: "210px" }}
+            style={{ backgroundColor: "#e8cdac", top: "210px" }}
           />
           <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-[140px] gap-y-10 sm:gap-y-12 md:gap-y-[90px] justify-items-center">
             {CATEGORIES.map((cat) => (

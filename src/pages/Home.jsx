@@ -13,6 +13,7 @@ const featuredWorks = [
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
     technicalInfo: "EXP.01 // 50mm F/2",
+    imageSrc: "/DSC05913.JPG",
   },
   {
     title: "Consectetur adipiscing elit",
@@ -21,6 +22,7 @@ const featuredWorks = [
     aspectRatio: "aspect-[9/18] md:aspect-[9/19]",
     aspectRatioMobile: "aspect-[4/5]",
     technicalInfo: "EXP.02 // 85mm F/1.4",
+    imageSrc: "/DSC_2052.jpg",
   },
   {
     title: "Sed do eiusmod tempor",
@@ -29,6 +31,7 @@ const featuredWorks = [
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
     technicalInfo: "EXP.03 // 35mm F/1.8",
+    imageSrc: "/_MG_8910.webp",
   },
   {
     title: "Incididunt ut labore et dolore",
@@ -37,6 +40,7 @@ const featuredWorks = [
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
     technicalInfo: "EXP.04 // 24mm F/4",
+    imageSrc: "/DSC07929 (1).jpg",
   },
   {
     title: "Magna aliqua ut enim ad minim",
@@ -45,6 +49,7 @@ const featuredWorks = [
     aspectRatio: "aspect-[7/9]",
     aspectRatioMobile: "aspect-[7/9]",
     technicalInfo: "EXP.05 // 90mm F/2.8",
+    imageSrc: "/DSC_1191.JPG",
   },
 ];
 
@@ -60,6 +65,7 @@ const FeaturedTile = ({ work, isMobile = false, width, height }) => (
           label={`SKY // ${work.title.substring(0, 28)}`}
           technicalInfo={work.technicalInfo}
           className="!aspect-auto w-full h-full"
+          imageSrc={work.imageSrc}
         />
       </div>
     </Link>
