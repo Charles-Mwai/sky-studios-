@@ -57,13 +57,13 @@ export const weddingsGallery = {
     { size: "S", src: "/optimised/weddings/DSC_2011 (1).webp" },
     { size: "L", src: "/optimised/weddings/DSC05368.webp" },
     { size: "L", src: "/optimised/weddings/DSC05784.webp" },
-    { size: "L", src: "/optimised/weddings/DSC00819.webp" },
+    { size: "L", src: "/optimised/weddings/DSC00788.webp" },
     { size: "L", src: "/optimised/weddings/DSC00822.webp" },
     { size: "L", src: "/optimised/weddings/DSC_2342.webp" },
     { size: "L", src: "/optimised/weddings/DSC_2495.webp" },
     { size: "S", src: "/optimised/weddings/DSC_2544.webp" },
     { size: "L", src: "/optimised/weddings/DSC05896.webp" },
-    { size: "S", src: "/optimised/weddings/DSC_2392.webp" },
+    { size: "S", src: "/optimised/weddings/DSC00778.webp" },
   ],
 };
 
