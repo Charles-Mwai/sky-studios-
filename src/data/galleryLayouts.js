@@ -24,10 +24,6 @@ export const portraitGallery = {
     { src: "/optimised/DSC08096.webp" },
     { src: "/optimised/DSC06197 (1) (1).webp" },
   ],
-  /**
-   * Scroll gallery — strict 2-size pattern (L=280×420, S=280×185)
-   * Row rhythm: S L S L / L L L L / L S L S
-   */
   scrollPattern: [
     { size: "S", src: "/optimised/DSC_78.webp" },
     { size: "L", src: "/optimised/DSC_104.webp" },
@@ -94,22 +90,22 @@ export const realEstateGallery = {
   displayTitle: "Real Estate Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
-    { src: null },
-    { src: null },
+    { src: "/optimised/real-estate/DSC06467.webp" },
+    { src: "/optimised/real-estate/DSC06374.webp" },
   ],
   scrollPattern: [
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
+    { size: "S", src: "/optimised/real-estate/DSC_1032.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC06364.webp" },
+    { size: "S", src: "/optimised/real-estate/DSC06578.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC06575.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC-25.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC_0936.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC06342.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC06408.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC06427.webp" },
+    { size: "S", src: "/optimised/real-estate/DSC-33.webp" },
+    { size: "L", src: "/optimised/real-estate/DSC_1066.webp" },
+    { size: "S", src: "/optimised/real-estate/DSC06329.webp" },
   ],
 };
 
