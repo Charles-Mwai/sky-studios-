@@ -67,7 +67,127 @@ export const weddingsGallery = {
   ],
 };
 
+export const productGallery = {
+  displayTitle: "Product Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
+export const realEstateGallery = {
+  displayTitle: "Real Estate Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
+export const fashionGallery = {
+  displayTitle: "Fashion Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
+export const corporateGallery = {
+  displayTitle: "Corporate Events Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
+export const droneGallery = {
+  displayTitle: "Drone Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
 export const galleryByCategory = {
   portraits: portraitGallery,
   weddings: weddingsGallery,
+  product: productGallery,
+  "real-estate": realEstateGallery,
+  fashion: fashionGallery,
+  corporate: corporateGallery,
+  drone: droneGallery,
 };
