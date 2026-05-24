@@ -11,10 +11,10 @@ const INTRO_MASONRY = {
   image2: { width: 332, height: 241 },
 };
 
-/** Gallery scroll — L = 280×420, S = 280×185 */
+/** Gallery scroll — L = 280×420, S = 280×185 (desktop); fluid aspect on mobile */
 const GALLERY_TILE_HEIGHT = {
-  L: "h-[420px]",
-  S: "h-[185px]",
+  L: "h-[55vw] sm:h-[420px]",
+  S: "h-[44vw] sm:h-[185px]",
 };
 
 const IntroMasonry = ({ gallery }) => {
@@ -28,7 +28,7 @@ const IntroMasonry = ({ gallery }) => {
           {gallery.intro?.[0]?.src ? (
             <LazyImage src={gallery.intro[0].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
-            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+            <div className="w-full h-full border border-brand-accent/15" style={{ backgroundColor: "#efede8" }} />
           )}
         </div>
         <div
@@ -46,7 +46,7 @@ const IntroMasonry = ({ gallery }) => {
           {gallery.intro?.[1]?.src ? (
             <LazyImage src={gallery.intro[1].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
-            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+            <div className="w-full h-full border border-brand-accent/15" style={{ backgroundColor: "#efede8" }} />
           )}
         </div>
       </div>
@@ -57,7 +57,7 @@ const IntroMasonry = ({ gallery }) => {
           {gallery.intro?.[0]?.src ? (
             <LazyImage src={gallery.intro[0].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
-            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+            <div className="w-full h-full border border-brand-accent/15" style={{ backgroundColor: "#efede8" }} />
           )}
         </div>
         <div
@@ -75,7 +75,7 @@ const IntroMasonry = ({ gallery }) => {
           {gallery.intro?.[1]?.src ? (
             <LazyImage src={gallery.intro[1].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
-            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+            <div className="w-full h-full border border-brand-accent/15" style={{ backgroundColor: "#efede8" }} />
           )}
         </div>
       </div>
@@ -85,20 +85,14 @@ const IntroMasonry = ({ gallery }) => {
 
 const GalleryMasonryTile = ({ size, index, src }) => (
   <div
-    className={`w-full max-w-[280px] shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02]`}
+    className={`w-full sm:w-[280px] shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02]`}
+    style={!src ? { backgroundColor: "#efede8", border: "1px solid rgba(194,184,163,0.15)" } : {}}
   >
-    {src ? (
+    {src && (
       <LazyImage
         src={src}
-        placeholderSrc={src}
         alt={`Gallery image ${index + 1}`}
         className="w-full h-full"
-      />
-    ) : (
-      <div
-        className="w-full h-full bg-brand-details/70 border border-brand-accent/15"
-        role="img"
-        aria-label={`Gallery image ${index + 1}`}
       />
     )}
   </div>
@@ -121,7 +115,7 @@ const patternToColumns = (pattern, columnCount) => {
 };
 
 const MasonryColumn = ({ tiles }) => (
-  <div className="flex flex-col gap-[20px]">
+  <div className="flex flex-col gap-[20px] w-full sm:w-[280px]">
     {tiles.map(({ size, src, index }) => (
       <GalleryMasonryTile key={index} size={size} src={src} index={index} />
     ))}
@@ -151,8 +145,8 @@ const ScrollGalleryMasonry = ({ pattern }) => {
         ))}
       </div>
 
-      {/* Mobile — single column, fluid width */}
-      <div className="flex md:hidden flex-col gap-[20px] w-full max-w-[320px] mx-auto items-center">
+      {/* Mobile — 2 columns, fluid width */}
+      <div className="grid md:hidden grid-cols-2 gap-[12px] w-full max-w-[600px] mx-auto">
         {pattern.map(({ size, src }, index) => (
           <GalleryMasonryTile key={index} size={size} src={src} index={index} />
         ))}
