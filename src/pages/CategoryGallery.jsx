@@ -25,11 +25,11 @@ const IntroMasonry = ({ gallery }) => {
       {/* Desktop */}
       <div className="hidden sm:flex flex-row items-end justify-between gap-3 md:gap-4 max-w-[1180px] mx-auto">
         <div className="self-start shrink-0 mt-[100px] md:mt-[110px]" style={{ width: s1.width, height: s1.height }}>
-          <LazyImage
-            src="/optimised/DSC08096.webp"
-            alt="Portrait photography"
-            className="w-full h-full"
-          />
+          {gallery.intro?.[0]?.src ? (
+            <LazyImage src={gallery.intro[0].src} alt={gallery.displayTitle} className="w-full h-full" />
+          ) : (
+            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+          )}
         </div>
         <div
           className="shrink-0 flex flex-col items-center justify-center text-center px-6 border border-brand-accent/15"
@@ -43,22 +43,22 @@ const IntroMasonry = ({ gallery }) => {
           </p>
         </div>
         <div className="self-center shrink-0" style={{ width: s2.width, height: s2.height }}>
-          <LazyImage
-            src="/optimised/DSC06197 (1) (1).webp"
-            alt="Portrait photography"
-            className="w-full h-full"
-          />
+          {gallery.intro?.[1]?.src ? (
+            <LazyImage src={gallery.intro[1].src} alt={gallery.displayTitle} className="w-full h-full" />
+          ) : (
+            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+          )}
         </div>
       </div>
 
       {/* Mobile */}
       <div className="flex sm:hidden flex-col items-center gap-4 w-full px-2 mx-auto">
         <div className="w-full" style={{ aspectRatio: `${s1.width} / ${s1.height}` }}>
-          <LazyImage
-            src="/optimised/DSC08096.webp"
-            alt="Portrait photography"
-            className="w-full h-full"
-          />
+          {gallery.intro?.[0]?.src ? (
+            <LazyImage src={gallery.intro[0].src} alt={gallery.displayTitle} className="w-full h-full" />
+          ) : (
+            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+          )}
         </div>
         <div
           className="w-full flex flex-col items-center justify-center text-center px-6 py-14 border border-brand-accent/15 min-h-[200px]"
@@ -72,11 +72,11 @@ const IntroMasonry = ({ gallery }) => {
           </p>
         </div>
         <div className="w-full" style={{ aspectRatio: `${s2.width} / ${s2.height}` }}>
-          <LazyImage
-            src="/optimised/DSC06197 (1) (1).webp"
-            alt="Portrait photography"
-            className="w-full h-full"
-          />
+          {gallery.intro?.[1]?.src ? (
+            <LazyImage src={gallery.intro[1].src} alt={gallery.displayTitle} className="w-full h-full" />
+          ) : (
+            <div className="w-full h-full bg-brand-details/70 border border-brand-accent/15" />
+          )}
         </div>
       </div>
     </section>

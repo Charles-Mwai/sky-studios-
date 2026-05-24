@@ -21,8 +21,8 @@ export const portraitGallery = {
   displayTitle: "Portrait Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
-    slide("photo-1534528741775-53994a69daeb", "portrait"),
-    slide("photo-1507003211169-0a1dd7228f2d", "banner"),
+    { src: "/optimised/DSC08096.webp" },
+    { src: "/optimised/DSC06197 (1) (1).webp" },
   ],
   /**
    * Scroll gallery — strict 2-size pattern (L=280×420, S=280×185)
@@ -44,6 +44,30 @@ export const portraitGallery = {
   ],
 };
 
+export const weddingsGallery = {
+  displayTitle: "Wedding Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
 export const galleryByCategory = {
   portraits: portraitGallery,
+  weddings: weddingsGallery,
 };

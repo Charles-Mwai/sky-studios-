@@ -46,6 +46,7 @@ export const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/portfolio/portraits" element={<CategoryGallery categoryId="portraits" />} />
+              <Route path="/portfolio/weddings" element={<CategoryGallery categoryId="weddings" />} />
               <Route path="/portfolio/:categoryId" element={<CategoryDetail />} />
               <Route path="/project/:projectId" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
