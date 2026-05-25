@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import LazyImage from "../components/LazyImage";
 import { galleryByCategory } from "../data/galleryLayouts";
@@ -155,6 +156,161 @@ const ScrollGalleryMasonry = ({ pattern }) => {
   );
 };
 
+const LandscapeCarouselGallery = ({ pattern }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const viewportRef = useRef(null);
+  const touchStartRef = useRef(null);
+
+  // Group pattern (12 items) into 11 shifting overlapping pairs
+  const pairs = [];
+  for (let i = 0; i < pattern.length - 1; i++) {
+    pairs.push([pattern[i], pattern[i + 1]]);
+  }
+
+  const nextSlide = () => {
+    if (currentIndex < pairs.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  // Mobile Swipe Bindings
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        touchStartRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+        };
+      }
+    };
+
+    const handleTouchEnd = (e) => {
+      if (!touchStartRef.current) return;
+
+      const deltaX = touchStartRef.current.x - e.changedTouches[0].clientX;
+      const deltaY = touchStartRef.current.y - e.changedTouches[0].clientY;
+
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        if (deltaX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+      touchStartRef.current = null;
+    };
+
+    viewport.addEventListener("touchstart", handleTouchStart, { passive: true });
+    viewport.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      viewport.removeEventListener("touchstart", handleTouchStart);
+      viewport.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [currentIndex, pairs.length]);
+
+  return (
+    <section className="w-full px-4 sm:px-6 pb-12 sm:pb-16 md:pb-20 max-w-[1180px] mx-auto select-none">
+      {/* Carousel Core */}
+      <div className="flex items-center justify-between gap-4 md:gap-8">
+        {/* Left Arrow */}
+        <button
+          onClick={prevSlide}
+          disabled={currentIndex === 0}
+          className="p-2 text-brand-text disabled:opacity-20 hover:text-brand-accent transition-colors duration-300 disabled:pointer-events-none"
+          aria-label="Previous image pair"
+        >
+          <ChevronLeft size={28} strokeWidth={1.5} />
+        </button>
+
+        {/* Viewport */}
+        <div ref={viewportRef} className="flex-grow overflow-hidden touch-pan-y">
+          <div
+            className="flex gap-[24px]"
+            style={{
+              transform: `translateX(calc(-${currentIndex} * (100% + 24px)))`,
+              transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          >
+            {pairs.map((pair, pIdx) => (
+              <div
+                key={pIdx}
+                className="w-full shrink-0 flex items-center justify-center gap-[12px]"
+              >
+                {/* Left image container (#efede8, sharp corners, aspect ratio 3:2) */}
+                <div
+                  className="bg-[#efede8] aspect-[3/2] rounded-none shrink-0 overflow-hidden relative"
+                  style={{
+                    width: "calc(100% / 1.9 - 6px)",
+                  }}
+                >
+                  {pair[0]?.src && (
+                    <LazyImage
+                      src={pair[0].src}
+                      alt={`Gallery image ${pIdx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+                {/* Right image container (#efede8, sharp corners, aspect ratio 3:2) */}
+                <div
+                  className="bg-[#efede8] aspect-[3/2] rounded-none shrink-0 overflow-hidden relative"
+                  style={{
+                    width: "calc((100% / 1.9 - 6px) * 0.9)",
+                  }}
+                >
+                  {pair[1]?.src && (
+                    <LazyImage
+                      src={pair[1].src}
+                      alt={`Gallery image ${pIdx + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Arrow */}
+        <button
+          onClick={nextSlide}
+          disabled={currentIndex === pairs.length - 1}
+          className="p-2 text-brand-text disabled:opacity-20 hover:text-brand-accent transition-colors duration-300 disabled:pointer-events-none"
+          aria-label="Next image pair"
+        >
+          <ChevronRight size={28} strokeWidth={1.5} />
+        </button>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex flex-wrap justify-center gap-3 mt-8">
+        {Array.from({ length: pairs.length }).map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              currentIndex === idx
+                ? "bg-brand-accent w-4 scale-110"
+                : "bg-brand-accent/35 hover:bg-brand-accent/60"
+            }`}
+            aria-label={`Go to slide pair ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
 export const CategoryGallery = ({ categoryId = "portraits" }) => {
   const gallery = galleryByCategory[categoryId];
 
@@ -176,38 +332,18 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
   }
 
   const scrollPattern = gallery.scrollPattern ?? [];
+  const LANDSCAPE_SLUGS = ["wildlife-and-landscape", "drone-photography"];
 
   return (
     <PageTransition>
       <article className="bg-brand-bg text-brand-text min-h-screen overflow-x-hidden">
         <IntroMasonry gallery={gallery} />
 
-        <ScrollGalleryMasonry pattern={scrollPattern} />
-
-        <footer className="border-t border-brand-accent/25">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 py-10 sm:py-14 md:py-16">
-              <div className="flex flex-col items-center text-center gap-2 py-6 sm:py-0 border-b border-brand-accent/15 sm:border-b-0">
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">Portfolio</h2>
-                <Link
-                  to="/portfolio"
-                  className="font-sans text-[9px] sm:text-[10px] tracking-widest uppercase text-brand-accent hover:text-brand-text transition-colors duration-300 py-2 px-3 min-h-[44px] inline-flex items-center justify-center"
-                >
-                  View My Recent Work
-                </Link>
-              </div>
-              <div className="flex flex-col items-center text-center gap-2 py-6 sm:py-0 sm:border-l sm:border-brand-accent/20 sm:pl-8">
-                <h2 className="font-serif text-2xl sm:text-3xl font-light text-brand-text">Get in Touch</h2>
-                <Link
-                  to="/contact"
-                  className="font-sans text-[9px] sm:text-[10px] tracking-widest uppercase text-brand-accent hover:text-brand-text transition-colors duration-300 py-2 px-3 min-h-[44px] inline-flex items-center justify-center"
-                >
-                  Send me a message
-                </Link>
-              </div>
-            </div>
-          </div>
-        </footer>
+        {LANDSCAPE_SLUGS.includes(gallery.slug) ? (
+          <LandscapeCarouselGallery pattern={scrollPattern} />
+        ) : (
+          <ScrollGalleryMasonry pattern={scrollPattern} />
+        )}
       </article>
     </PageTransition>
   );

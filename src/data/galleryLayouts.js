@@ -18,6 +18,7 @@ const slide = (id, aspect) => ({
 });
 
 export const portraitGallery = {
+  slug: "portraits",
   displayTitle: "Portrait Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -41,6 +42,7 @@ export const portraitGallery = {
 };
 
 export const weddingsGallery = {
+  slug: "weddings",
   displayTitle: "Wedding Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -64,6 +66,7 @@ export const weddingsGallery = {
 };
 
 export const productGallery = {
+  slug: "product",
   displayTitle: "Product Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -87,6 +90,7 @@ export const productGallery = {
 };
 
 export const realEstateGallery = {
+  slug: "real-estate",
   displayTitle: "Real Estate Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -110,6 +114,7 @@ export const realEstateGallery = {
 };
 
 export const fashionGallery = {
+  slug: "fashion",
   displayTitle: "Fashion Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -133,6 +138,7 @@ export const fashionGallery = {
 };
 
 export const corporateGallery = {
+  slug: "corporate",
   displayTitle: "Corporate Events Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
@@ -156,25 +162,50 @@ export const corporateGallery = {
 };
 
 export const droneGallery = {
+  slug: "drone-photography",
   displayTitle: "Drone Photography",
   scrollLabel: "Scroll for full Gallery",
   intro: [
-    { src: null },
-    { src: null },
+    { src: "/optimised/drone/DJI_0019.webp" },
+    { src: "/optimised/drone/DJI_0097.webp" },
   ],
   scrollPattern: [
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
-    { size: "L", src: null },
-    { size: "S", src: null },
+    { size: "L", src: "/optimised/drone/DJI_0207.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0224.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0228.webp" },
+    { size: "L", src: "/optimised/drone/DSC05693.webp" },
+    { size: "L", src: "/optimised/drone/DSC05696.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0041.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0099.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0107.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0166.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0171.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0196.webp" },
+    { size: "L", src: "/optimised/drone/DJI_0206.webp" },
+  ],
+};
+
+export const landscapeGallery = {
+  slug: "wildlife-and-landscape",
+  displayTitle: "Wildlife & Landscape",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: "/optimised/wildlife/DSC_4043.webp" },
+    { src: "/optimised/wildlife/DSC_3722.webp" },
+  ],
+  scrollPattern: [
+    { size: "L", src: "/optimised/wildlife/DSC_3891.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_4002.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3157.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3274.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3324.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3352.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3372.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3411.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3493.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3508.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3764.jpg" },
+    { size: "L", src: "/optimised/wildlife/DSC_3820.jpg" },
   ],
 };
 
@@ -186,4 +217,5 @@ export const galleryByCategory = {
   fashion: fashionGallery,
   corporate: corporateGallery,
   drone: droneGallery,
+  landscape: landscapeGallery,
 };

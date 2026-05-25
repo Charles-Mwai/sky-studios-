@@ -26,7 +26,7 @@ export const Footer = () => {
 
         {/* Instagram Section */}
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 border-b border-brand-accent/20 pb-4">
+          <div className="flex justify-center items-center border-b border-brand-accent/20 pb-4">
             <h5 className="font-serif text-sm tracking-wider uppercase text-brand-text/60">
               Follow us on Instagram
             </h5>

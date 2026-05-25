@@ -52,6 +52,7 @@ export const App = () => {
               <Route path="/portfolio/fashion" element={<CategoryGallery categoryId="fashion" />} />
               <Route path="/portfolio/corporate" element={<CategoryGallery categoryId="corporate" />} />
               <Route path="/portfolio/drone" element={<CategoryGallery categoryId="drone" />} />
+              <Route path="/portfolio/landscape" element={<CategoryGallery categoryId="landscape" />} />
               <Route path="/portfolio/:categoryId" element={<CategoryDetail />} />
               <Route path="/project/:projectId" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
