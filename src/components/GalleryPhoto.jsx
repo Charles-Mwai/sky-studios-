@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 /**
- * Full-bleed gallery image (Pixieset Esther style): w-full, h-auto, no frames.
+ * Full-bleed gallery image (Pixieset Peterstyle): w-full, h-auto, no frames.
  */
 /** Fixed-size masonry cell — image fills box with object-cover */
 export const GalleryPhotoFill = ({

@@ -1,4 +1,4 @@
-// Esther /gallery-2/ image sequence & aspect presets
+// Peter/gallery-2/ image sequence & aspect presets
 // https://esther-demo.mypixieset.com/gallery-2/
 
 const unsplash = (id, w = 1600) =>

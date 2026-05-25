@@ -5,7 +5,7 @@ import PageTransition from "../components/PageTransition";
 import ViewfinderContainer from "../components/ViewfinderContainer";
 import LazyImage from "../components/LazyImage";
 
-/** Featured work placeholders — 5-up masonry (Esther home layout) */
+/** Featured work placeholders — 5-up masonry (Peterhome layout) */
 const featuredWorks = [
   {
     title: "Weddings",

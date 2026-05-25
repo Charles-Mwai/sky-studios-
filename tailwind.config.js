@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          bg: "#FAF9F6",       // Esther off-white primary background
+          bg: "#FAF9F6",       // Peteroff-white primary background
           dark: "#1C1C1C",     // Soft charcoal
           text: "#1C1C1C",     // Primary text
           accent: "#C2B8A3",   // Muted gold/taupe accent
