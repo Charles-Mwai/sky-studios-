@@ -47,10 +47,10 @@ export const About = () => {
           {/* ── DESKTOP layout ─────────────────────────────────────────────── */}
           <div className="hidden lg:block" style={{ position: "relative" }}>
 
-            {/* Accent rect — covers the lower ~62% of this section */}
+            {/* Accent rect — covers the lower ~65% of this section */}
             <div style={{
               position: "absolute",
-              top: "38%",
+              top: "35%",
               left: 0,
               right: 0,
               bottom: 0,
@@ -67,7 +67,7 @@ export const About = () => {
                 </p>
                 <h1 style={{
                   fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: "clamp(72px, 8vw, 108px)",
+                  fontSize: "clamp(56px, 6vw, 84px)",
                   fontWeight: 300,
                   letterSpacing: "-0.04em",
                   lineHeight: 0.9,
