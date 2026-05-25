@@ -18,6 +18,12 @@
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 300;
   }
+
+  img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }
 
 @layer utilities {
