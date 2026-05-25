@@ -60,6 +60,7 @@ export const MasonryGrid = ({ images, onImageClick }) => {
                   label={`SKY // ${image.caption.substring(0, 24)}`}
                   technicalInfo={`EXP.0${idx + 1} // F/2.8`}
                   onClick={() => onImageClick(image)}
+                  imageSrc={image.url || image.src}
                 />
               </motion.div>
             );

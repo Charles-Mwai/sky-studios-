@@ -10,7 +10,8 @@ export const ViewfinderContainer = ({
   className = "",
   onClick,
   imageSrc,
-  placeholderSrc
+  placeholderSrc,
+  disableLazy = false
 }) => {
   // Shape-specific styling
   const containerClass = shape === "pill" 
@@ -25,12 +26,20 @@ export const ViewfinderContainer = ({
       {/* Background Subtle Grid Texture / Gradient or Image */}
       {imageSrc ? (
         <div className={`absolute inset-0 transition-transform duration-1000 ease-cinematic group-hover:scale-105 ${containerClass}`}>
-          <LazyImage
-            src={imageSrc}
-            placeholderSrc={placeholderSrc || imageSrc}
-            alt={label}
-            className="w-full h-full object-cover"
-          />
+          {disableLazy ? (
+            <img
+              src={imageSrc}
+              alt={label}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <LazyImage
+              src={imageSrc}
+              placeholderSrc={placeholderSrc || imageSrc}
+              alt={label}
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
       ) : (
         <div className={`absolute inset-0 bg-gradient-to-tr from-brand-details via-brand-bg/40 to-brand-details transition-transform duration-1000 ease-cinematic group-hover:scale-105 ${containerClass}`} />
