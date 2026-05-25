@@ -30,25 +30,17 @@ export const Footer = () => {
             <h5 className="font-serif text-sm tracking-wider uppercase text-brand-text/60">
               Follow us on Instagram
             </h5>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-serif text-base text-brand-accent hover:text-brand-text transition-colors duration-300 font-light"
-            >
-              @mungai_pinchez
-            </a>
           </div>
 
           {/* Instagram Feed Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3">
+          <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
             {INSTAGRAM_IMAGES.map((src, i) => (
               <a
                 key={i}
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block aspect-square overflow-hidden"
+                className="block flex-shrink-0 w-[42vw] sm:w-auto aspect-square overflow-hidden"
                 aria-label="View on Instagram"
               >
                 <LazyImage
