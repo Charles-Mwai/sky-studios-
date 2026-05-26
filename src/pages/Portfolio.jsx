@@ -6,14 +6,16 @@ import ViewfinderContainer from "../components/ViewfinderContainer";
 import LazyImage from "../components/LazyImage";
 
 const CATEGORIES = [
-  { id: "portraits",    title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/optimised/DSC_3094.webp" },
-  { id: "fashion",      title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08097 (1).webp" },
-  { id: "weddings",     title: "Weddings",             exp: "03", offset: "",       staggerOffset: "",      image: "/optimised/DSC_2529.webp" },
-  { id: "corporate",    title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08857.webp" },
-  { id: "product",      title: "Product",              exp: "05", offset: "-100px", staggerOffset: "110px", image: "/optimised/_901141.webp" },
-  { id: "landscape",    title: "Wildlife & Landscape", exp: "06", offset: "",       staggerOffset: "110px", image: "/optimised/DSC_4043 (1).webp" },
-  { id: "real-estate",  title: "Real Estate",          exp: "07", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_1208.webp" },
-  { id: "drone",        title: "Drone Photography",    exp: "08", offset: "",       staggerOffset: "110px", image: "/optimised/DJI_0247 (1).webp" },
+  { id: "portraits",      title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/optimised/DSC_3094.webp" },
+  { id: "fashion",        title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08097 (1).webp" },
+  { id: "social-events",  title: "Social Events",        exp: "03", offset: "",       staggerOffset: "" },
+  { id: "corporate",      title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08857.webp" },
+  { id: "family-sessions",title: "Family Sessions",      exp: "05", offset: "",       staggerOffset: "" },
+  { id: "weddings",       title: "Weddings",             exp: "06", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_2529.webp" },
+  { id: "product",        title: "Product",              exp: "07", offset: "",       staggerOffset: "110px", image: "/optimised/_901141.webp" },
+  { id: "landscape",      title: "Wildlife & Landscape", exp: "08", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_4043 (1).webp" },
+  { id: "real-estate",    title: "Real Estate",          exp: "09", offset: "",       staggerOffset: "110px", image: "/optimised/DSC_1208.webp" },
+  { id: "drone",          title: "Drone Photography",    exp: "10", offset: "-100px", staggerOffset: "110px", image: "/optimised/DJI_0247 (1).webp" },
 ];
 
 const useIsDesktop = () => {
@@ -39,10 +41,10 @@ const CategoryCard = ({ category }) => {
     <article className="flex flex-col w-full items-center md:items-start md:w-auto" style={{ marginTop }}>
       <Link
         to={`/portfolio/${category.id}`}
-        className="block overflow-hidden active:opacity-90 w-full max-w-[280px] md:w-[280px]"
+        className="block overflow-hidden active:opacity-90 w-full max-w-[220px] md:w-[220px]"
         aria-label={`View ${category.title} portfolio`}
       >
-        <div className="w-full max-w-[280px] md:w-[280px] h-[360px] sm:h-[420px] overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]">
+        <div className="w-full max-w-[220px] md:w-[220px] h-[280px] sm:h-[330px] overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]">
           {category.image ? (
             <LazyImage src={category.image} alt={category.title} className="w-full h-full" />
           ) : (
@@ -58,7 +60,7 @@ const CategoryCard = ({ category }) => {
       <h2 className="mt-4">
         <Link
           to={`/portfolio/${category.id}`}
-          className="font-sans text-sm tracking-[0.18em] uppercase text-brand-text hover:text-brand-accent transition-colors duration-300"
+          className="font-sans text-xs tracking-[0.18em] uppercase text-brand-text hover:text-brand-accent transition-colors duration-300"
         >
           {category.title}
         </Link>
@@ -96,7 +98,7 @@ export const Portfolio = () => {
             className="hidden md:block absolute left-0 w-full bottom-0"
             style={{ backgroundColor: "#bfc9c0", top: "210px" }}
           />
-          <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-[140px] gap-y-10 sm:gap-y-12 md:gap-y-[90px] justify-items-center">
+          <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-x-[60px] gap-y-10 sm:gap-y-12 md:gap-y-[90px] justify-items-center">
             {CATEGORIES.map((cat) => (
               <CategoryCard key={cat.id} category={cat} />
             ))}

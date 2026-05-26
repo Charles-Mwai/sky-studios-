@@ -46,15 +46,19 @@ const featuredWorks = [
 
 const FeaturedTile = ({ work, isMobile = false, width, height }) => (
   <div className="flex flex-col gap-2">
-    <Link to={work.to} className="block active:opacity-90" aria-label={work.title}>
+    <Link 
+      to={work.to} 
+      className="block active:opacity-90 shadow-xl hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] transition-all duration-700 rounded-[2px]" 
+      aria-label={work.title}
+      style={isMobile ? { width: "100%", aspectRatio: "7/9" } : { width, height }}
+    >
       <div
-        className="overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]"
-        style={isMobile ? { width: "100%", aspectRatio: "7/9" } : { width, height }}
+        className="overflow-hidden w-full h-full rounded-[2px] transition-transform duration-500 ease-out hover:scale-[1.02]"
       >
         <LazyImage src={work.imageSrc} alt={work.title} className="w-full h-full" />
       </div>
     </Link>
-    <div className="text-center md:text-left px-0.5">
+    <div className="text-center md:text-left px-0.5 mt-1">
       <h4 className="font-serif text-base sm:text-xl md:text-2xl font-light text-brand-text leading-snug text-balance">
         <Link to={work.to} className="inline-block py-1 hover:text-brand-accent transition-colors duration-300">
           {work.title}
@@ -119,7 +123,7 @@ export const Home = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex flex-row items-start justify-center gap-3 lg:gap-4">
+          <div className="hidden md:flex flex-row items-start justify-center gap-6 lg:gap-8">
             {/* Left column */}
             <div className="flex flex-col">
               <FeaturedTile work={colLeftTop}    width="330px" height="315px" />
@@ -180,7 +184,6 @@ export const Home = () => {
             </div>
           </div>
         </section>
-
 
         {/* Closing statement */}
         <section className="py-12 sm:py-16 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 text-center border-t border-brand-accent/20">

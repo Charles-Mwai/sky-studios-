@@ -209,6 +209,54 @@ export const landscapeGallery = {
   ],
 };
 
+export const socialEventsGallery = {
+  slug: "social-events",
+  displayTitle: "Social Events Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
+export const familySessionsGallery = {
+  slug: "family-sessions",
+  displayTitle: "Family Sessions Photography",
+  scrollLabel: "Scroll for full Gallery",
+  intro: [
+    { src: null },
+    { src: null },
+  ],
+  scrollPattern: [
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+    { size: "L", src: null },
+    { size: "S", src: null },
+  ],
+};
+
 export const galleryByCategory = {
   portraits: portraitGallery,
   weddings: weddingsGallery,
@@ -218,4 +266,6 @@ export const galleryByCategory = {
   corporate: corporateGallery,
   drone: droneGallery,
   landscape: landscapeGallery,
+  "social-events": socialEventsGallery,
+  "family-sessions": familySessionsGallery,
 };
