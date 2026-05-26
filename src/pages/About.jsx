@@ -130,7 +130,7 @@ export const About = () => {
                         fontFamily: "'Inter', sans-serif",
                         color: "#101010",
                       }}>
-                        Earthy tones and minimalism. Photos that speak softly with power.
+                        Stillness captured, moments preserved. Photos that speak softly with power.
                       </p>
                     </div>
 
