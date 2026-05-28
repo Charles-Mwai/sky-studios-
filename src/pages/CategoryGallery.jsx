@@ -485,16 +485,13 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
 
   // Map scrollPattern images into the formats required by Lightbox component
   const mappedImages = scrollPattern.map((item, idx) => {
-    // Infer aspect ratio from size or use item's aspect property if available
-    let aspectRatio = undefined;
-    if (item.aspect) {
-      aspectRatio = item.aspect;
-    } else if (item.size === "S") {
-      // Small items are typically landscape
-      aspectRatio = "landscape";
+    let aspectRatio = "square";
+    if (item.size === "S") {
+      aspectRatio = "square";
     } else if (item.size === "L") {
-      // Large items are often portrait or tall
       aspectRatio = "portrait";
+    } else if (item.aspect) {
+      aspectRatio = item.aspect;
     }
     
     return {

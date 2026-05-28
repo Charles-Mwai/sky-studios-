@@ -43,7 +43,7 @@ export const Lightbox = ({
   // Map aspect ratio for Lightbox - flexible mapping with fallback
   const getAspectRatioClass = (aspectRatio) => {
     const ratioMap = {
-      "portrait": "aspect-[3/4]",
+      "portrait": "aspect-[2/3]",
       "tall": "aspect-[9/16]",
       "square": "aspect-square",
       "landscape-wide": "aspect-[16/9]",
@@ -101,11 +101,11 @@ export const Lightbox = ({
             onDragEnd={handleDragEnd}
             className="relative w-full max-w-[85vw] sm:max-w-[70vw] md:max-w-3xl flex items-center justify-center cursor-grab active:cursor-grabbing"
           >
-            <div className={`relative w-full overflow-hidden shadow-2xl border border-brand-accent/10 rounded-[2px] ${ratioClass}`}>
+            <div className={`relative w-auto h-[60vh] sm:h-[70vh] max-w-full overflow-hidden shadow-2xl border border-brand-accent/10 rounded-[2px] ${ratioClass}`}>
               <img
                 src={activeImage.url || activeImage.src}
                 alt={activeImage.caption || ""}
-                className="w-full h-full object-contain select-none pointer-events-none"
+                className="w-full h-full object-cover select-none pointer-events-none"
               />
             </div>
           </motion.div>

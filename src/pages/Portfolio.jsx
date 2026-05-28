@@ -8,7 +8,7 @@ import LazyImage from "../components/LazyImage";
 const CATEGORIES = [
   { id: "portraits",      title: "Portraits",            exp: "01", offset: "",       staggerOffset: "",      image: "/optimised/DSC_3094.webp" },
   { id: "fashion",        title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08097 (1).webp" },
-  { id: "social-events",  title: "Social Events",        exp: "03", offset: "",       staggerOffset: "" },
+  { id: "social-events",  title: "Social Events",        exp: "03", offset: "",       staggerOffset: "",      image: "/optimised/DSC08281.webp" },
   { id: "corporate",      title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08857.webp" },
   { id: "family-sessions",title: "Family Sessions",      exp: "05", offset: "",       staggerOffset: "" },
   { id: "weddings",       title: "Weddings",             exp: "06", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_2529.webp" },

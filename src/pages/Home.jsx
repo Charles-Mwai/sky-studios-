@@ -44,18 +44,18 @@ const featuredWorks = [
   },
 ];
 
-const FeaturedTile = ({ work, isMobile = false, width, height }) => (
+const FeaturedTile = ({ work, isMobile = false, width, height, className = "" }) => (
   <div className="flex flex-col gap-2">
     <Link 
       to={work.to} 
-      className="block active:opacity-90 shadow-xl hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] transition-all duration-700 rounded-[2px]" 
+      className={`block active:opacity-90 shadow-xl hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] transition-all duration-700 rounded-[2px] ${className}`}
       aria-label={work.title}
-      style={isMobile ? { width: "100%", aspectRatio: "7/9" } : { width, height }}
+      style={isMobile ? { width: "100%", aspectRatio: "7/9" } : (width && height) ? { width, height } : { width }}
     >
       <div
         className="overflow-hidden w-full h-full rounded-[2px] transition-transform duration-500 ease-out hover:scale-[1.02]"
       >
-        <LazyImage src={work.imageSrc} alt={work.title} className="w-full h-full" />
+        <LazyImage src={work.imageSrc} alt={work.title} className="w-full h-full object-cover" />
       </div>
     </Link>
     <div className="text-center md:text-left px-0.5 mt-1">
@@ -124,24 +124,40 @@ export const Home = () => {
             ))}
           </div>
 
-          {/* Tablet and up: 3-column responsive layout */}
-          <div className="hidden md:block max-w-7xl mx-auto">
-            <div className="flex gap-4 lg:gap-6 items-start justify-center">
+          {/* Desktop Layout — widths >= 1024px */}
+          <div className="hidden lg:flex flex-row items-start justify-center gap-6 lg:gap-8 max-w-7xl mx-auto">
+            {/* Left column */}
+            <div className="flex flex-col gap-6">
+              <FeaturedTile work={colLeftTop}    width="330px" height="315px" />
+              <FeaturedTile work={colLeftBottom} width="330px" height="315px" />
+            </div>
+            {/* Center column */}
+            <FeaturedTile work={colCenter}      width="424px" height="714px" />
+            {/* Right column */}
+            <div className="flex flex-col gap-6">
+              <FeaturedTile work={colRightTop}    width="330px" height="315px" />
+              <FeaturedTile work={colRightBottom} width="330px" height="315px" />
+            </div>
+          </div>
+
+          {/* Tablet Layout — widths 768px to 1023px */}
+          <div className="hidden md:block lg:hidden max-w-7xl mx-auto">
+            <div className="flex gap-4 items-start justify-center">
               {/* Left column - 28% */}
-              <div className="flex flex-col gap-4 lg:gap-6 w-[28%]">
-                <FeaturedTile work={colLeftTop} width="100%" height="auto" />
-                <FeaturedTile work={colLeftBottom} width="100%" height="auto" />
+              <div className="flex flex-col gap-4 w-[28%]">
+                <FeaturedTile work={colLeftTop} width="100%" className={colLeftTop.aspectRatio} />
+                <FeaturedTile work={colLeftBottom} width="100%" className={colLeftBottom.aspectRatio} />
               </div>
 
-              {/* Center column - 36% (larger on desktop) */}
+              {/* Center column - 36% */}
               <div className="w-[36%]">
-                <FeaturedTile work={colCenter} width="100%" height="auto" />
+                <FeaturedTile work={colCenter} width="100%" className={colCenter.aspectRatio} />
               </div>
 
               {/* Right column - 28% */}
-              <div className="flex flex-col gap-4 lg:gap-6 w-[28%]">
-                <FeaturedTile work={colRightTop} width="100%" height="auto" />
-                <FeaturedTile work={colRightBottom} width="100%" height="auto" />
+              <div className="flex flex-col gap-4 w-[28%]">
+                <FeaturedTile work={colRightTop} width="100%" className={colRightTop.aspectRatio} />
+                <FeaturedTile work={colRightBottom} width="100%" className={colRightBottom.aspectRatio} />
               </div>
             </div>
           </div>
