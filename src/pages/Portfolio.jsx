@@ -73,7 +73,7 @@ export const Portfolio = () => {
   return (
     <PageTransition>
       <div className="bg-brand-bg text-brand-text min-h-screen overflow-x-hidden">
-        <section className="pt-24 pb-8 sm:pt-32 sm:pb-10 md:pt-40 md:pb-14 px-4 sm:px-6 md:px-12 flex flex-col items-center justify-center text-center">
+        <section className="pt-24 pb-8 sm:pt-32 sm:pb-10 md:pt-36 md:pb-12 lg:pt-40 lg:pb-14 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col items-center justify-center text-center">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export const Portfolio = () => {
           </motion.p>
         </section>
 
-        <section className="relative pb-16 sm:pb-20 md:pb-28 px-4 sm:px-6 md:px-12">
+        <section className="relative pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-4 sm:px-6 md:px-8 lg:px-12">
           {/* Background block — desktop only */}
           <div
             className="hidden md:block absolute left-0 w-full bottom-0"

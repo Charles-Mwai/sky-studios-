@@ -40,10 +40,10 @@ export const Contact = () => {
   return (
     <PageTransition>
       <div className="bg-brand-bg text-brand-text min-h-screen pt-24 pb-16 font-sans">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           
           {/* BLOCK 1: Hero Form Grid (align items center for vertical floating centering on desktop) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center mb-16 sm:mb-20 md:mb-24">
             
             {/* Left: White Image Container (Landscape aspect ratio, increased size, heavy shadow for floating effect) */}
             <div className="flex justify-center w-full">

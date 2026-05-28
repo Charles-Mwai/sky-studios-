@@ -40,16 +40,20 @@ export const Lightbox = ({
     }
   };
 
-  // Map aspect ratio for Lightbox
-  const ratioClass = activeImage.aspectRatio === "portrait"
-    ? "aspect-[3/4]"
-    : activeImage.aspectRatio === "tall"
-    ? "aspect-[9/16]"
-    : activeImage.aspectRatio === "square"
-    ? "aspect-square"
-    : activeImage.aspectRatio === "landscape-wide"
-    ? "aspect-[16/9]"
-    : "aspect-[3/2]";
+  // Map aspect ratio for Lightbox - flexible mapping with fallback
+  const getAspectRatioClass = (aspectRatio) => {
+    const ratioMap = {
+      "portrait": "aspect-[3/4]",
+      "tall": "aspect-[9/16]",
+      "square": "aspect-square",
+      "landscape-wide": "aspect-[16/9]",
+      "landscape": "aspect-[3/2]",
+    };
+    
+    return ratioMap[aspectRatio] || "aspect-auto";
+  };
+
+  const ratioClass = getAspectRatioClass(activeImage.aspectRatio);
 
   return (
     <AnimatePresence>
@@ -101,7 +105,7 @@ export const Lightbox = ({
               <img
                 src={activeImage.url || activeImage.src}
                 alt={activeImage.caption || ""}
-                className="w-full h-full object-cover select-none pointer-events-none"
+                className="w-full h-full object-contain select-none pointer-events-none"
               />
             </div>
           </motion.div>

@@ -33,14 +33,14 @@ export const Footer = () => {
           </div>
 
           {/* Instagram Feed Grid */}
-          <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 overflow-x-auto no-scrollbar">
+          <div className="flex sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 overflow-x-auto no-scrollbar">
             {INSTAGRAM_IMAGES.map((src, i) => (
               <a
                 key={i}
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block flex-shrink-0 w-[42vw] sm:w-auto aspect-square overflow-hidden"
+                className="block flex-shrink-0 w-[42vw] sm:w-auto md:w-auto aspect-square overflow-hidden"
                 aria-label="View on Instagram"
               >
                 <LazyImage

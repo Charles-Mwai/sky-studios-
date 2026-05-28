@@ -8,25 +8,34 @@ import { galleryByCategory } from "../data/galleryLayouts";
 
 /** Intro masonry — header measurements (px) */
 const INTRO_MASONRY = {
-  image1: { width: 326, height: 461 },
-  title:  { width: 375, height: 682 },
-  image2: { width: 332, height: 241 },
+  desktop: {
+    image1: { width: 326, height: 461 },
+    title:  { width: 375, height: 682 },
+    image2: { width: 332, height: 241 },
+  },
+  tablet: {
+    image1: { width: "30%", height: "auto" },
+    title:  { width: "40%", height: "auto", minHeight: "280px" },
+    image2: { width: "30%", height: "auto" },
+  }
 };
 
-/** Gallery scroll — L = 280×420, S = 280×185 (desktop); fluid aspect on mobile */
+/** Gallery scroll — L = 280×420, S = 280×185 (desktop); fluid aspect on mobile/tablet */
 const GALLERY_TILE_HEIGHT = {
-  L: "h-[55vw] sm:h-[420px]",
-  S: "h-[44vw] sm:h-[185px]",
+  L: "h-[55vw] sm:h-[60vw] md:h-[50vw] lg:h-[420px]",
+  S: "h-[44vw] sm:h-[48vw] md:h-[35vw] lg:h-[185px]",
 };
 
 const IntroMasonry = ({ gallery }) => {
-  const { image1: s1, title: sTitle, image2: s2 } = INTRO_MASONRY;
+  const isTablet = typeof window !== "undefined" && window.innerWidth < 1024 && window.innerWidth >= 640;
+  const sizes = isTablet ? INTRO_MASONRY.tablet : INTRO_MASONRY.desktop;
+  const { image1: s1, title: sTitle, image2: s2 } = sizes;
 
   return (
-    <section className="pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 px-4 sm:px-6">
-      {/* Desktop */}
-      <div className="hidden sm:flex flex-row items-end justify-between gap-3 md:gap-4 max-w-[1180px] mx-auto">
-        <div className="self-start shrink-0 mt-[100px] md:mt-[110px]" style={{ width: s1.width, height: s1.height }}>
+    <section className="pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 md:px-8">
+      {/* Desktop & Tablet */}
+      <div className="hidden sm:flex flex-row items-end justify-between gap-2 md:gap-3 lg:gap-4 max-w-full lg:max-w-[1180px] mx-auto">
+        <div className="self-start shrink-0 mt-[80px] md:mt-[100px] lg:mt-[110px]" style={{ width: typeof s1.width === "string" ? s1.width : s1.width, height: s1.height }}>
           {gallery.intro?.[0]?.src ? (
             <LazyImage src={gallery.intro[0].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
@@ -34,17 +43,17 @@ const IntroMasonry = ({ gallery }) => {
           )}
         </div>
         <div
-          className="shrink-0 flex flex-col items-center justify-center text-center px-6 border border-brand-accent/15"
-          style={{ width: sTitle.width, height: sTitle.height, backgroundColor: "#bfc9c0" }}
+          className="shrink-0 flex flex-col items-center justify-center text-center px-4 md:px-6 border border-brand-accent/15"
+          style={{ width: typeof sTitle.width === "string" ? sTitle.width : sTitle.width, minHeight: sTitle.minHeight || sTitle.height, height: typeof sTitle.height === "string" ? sTitle.height : undefined, backgroundColor: "#bfc9c0" }}
         >
-          <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-dark leading-tight text-balance">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-light text-brand-dark leading-tight text-balance">
             {gallery.displayTitle}
           </h2>
-          <p className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-black font-bold mt-5">
+          <p className="font-sans text-[9px] md:text-[10px] tracking-widest uppercase text-black font-bold mt-4 md:mt-5">
             {gallery.scrollLabel}
           </p>
         </div>
-        <div className="self-center shrink-0" style={{ width: s2.width, height: s2.height }}>
+        <div className="self-center shrink-0" style={{ width: typeof s2.width === "string" ? s2.width : s2.width, height: s2.height }}>
           {gallery.intro?.[1]?.src ? (
             <LazyImage src={gallery.intro[1].src} alt={gallery.displayTitle} className="w-full h-full" />
           ) : (
@@ -85,10 +94,11 @@ const IntroMasonry = ({ gallery }) => {
   );
 };
 
-const GalleryMasonryTile = ({ size, index, src }) => (
+const GalleryMasonryTile = ({ size, index, src, onClick }) => (
   <div
-    className={`w-full sm:w-[280px] shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02]`}
+    className={`w-full sm:w-[280px] shrink-0 ${GALLERY_TILE_HEIGHT[size]} overflow-hidden break-inside-avoid rounded-none transition-transform duration-500 ease-out hover:scale-[1.02] cursor-pointer`}
     style={!src ? { backgroundColor: "#efede8", border: "1px solid rgba(194,184,163,0.15)" } : {}}
+    onClick={() => onClick && onClick(index)}
   >
     {src && (
       <LazyImage
@@ -116,15 +126,15 @@ const patternToColumns = (pattern, columnCount) => {
   return columns;
 };
 
-const MasonryColumn = ({ tiles }) => (
+const MasonryColumn = ({ tiles, onImageClick }) => (
   <div className="flex flex-col gap-[20px] w-full sm:w-[280px]">
     {tiles.map(({ size, src, index }) => (
-      <GalleryMasonryTile key={index} size={size} src={src} index={index} />
+      <GalleryMasonryTile key={index} size={size} src={src} index={index} onClick={onImageClick} />
     ))}
   </div>
 );
 
-const ScrollGalleryMasonry = ({ pattern }) => {
+const ScrollGalleryMasonry = ({ pattern, onImageClick }) => {
   const columns4 = patternToColumns(pattern, 4);
   const columns2 = [
     [...columns4[0], ...columns4[1]],
@@ -136,21 +146,21 @@ const ScrollGalleryMasonry = ({ pattern }) => {
       {/* Desktop — 4 columns */}
       <div className="hidden lg:flex gap-[20px] max-w-[1180px] mx-auto justify-center items-end">
         {columns4.map((col, colIdx) => (
-          <MasonryColumn key={colIdx} tiles={col} />
+          <MasonryColumn key={colIdx} tiles={col} onImageClick={onImageClick} />
         ))}
       </div>
 
       {/* Tablet — 2 columns */}
       <div className="hidden md:flex lg:hidden gap-[20px] max-w-[1180px] mx-auto justify-center items-end">
         {columns2.map((col, colIdx) => (
-          <MasonryColumn key={colIdx} tiles={col} />
+          <MasonryColumn key={colIdx} tiles={col} onImageClick={onImageClick} />
         ))}
       </div>
 
       {/* Mobile — 2 columns, fluid width */}
       <div className="grid md:hidden grid-cols-2 gap-[12px] w-full max-w-[600px] mx-auto">
         {pattern.map(({ size, src }, index) => (
-          <GalleryMasonryTile key={index} size={size} src={src} index={index} />
+          <GalleryMasonryTile key={index} size={size} src={src} index={index} onClick={onImageClick} />
         ))}
       </div>
     </section>
@@ -474,12 +484,26 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
   const LANDSCAPE_SLUGS = ["wildlife-and-landscape", "drone-photography"];
 
   // Map scrollPattern images into the formats required by Lightbox component
-  const mappedImages = scrollPattern.map((item, idx) => ({
-    id: `${gallery.slug}-img-${idx}`,
-    url: item.src,
-    aspectRatio: "landscape",
-    caption: `${gallery.displayTitle} — Shot ${idx + 1}`,
-  }));
+  const mappedImages = scrollPattern.map((item, idx) => {
+    // Infer aspect ratio from size or use item's aspect property if available
+    let aspectRatio = undefined;
+    if (item.aspect) {
+      aspectRatio = item.aspect;
+    } else if (item.size === "S") {
+      // Small items are typically landscape
+      aspectRatio = "landscape";
+    } else if (item.size === "L") {
+      // Large items are often portrait or tall
+      aspectRatio = "portrait";
+    }
+    
+    return {
+      id: `${gallery.slug}-img-${idx}`,
+      url: item.src,
+      aspectRatio,
+      caption: `${gallery.displayTitle} — Shot ${idx + 1}`,
+    };
+  });
 
   const handlePrevImage = () => {
     if (!lightboxImage) return;
@@ -506,7 +530,7 @@ export const CategoryGallery = ({ categoryId = "portraits" }) => {
             onImageClick={(idx) => setLightboxImage(mappedImages[idx])} 
           />
         ) : (
-          <ScrollGalleryMasonry pattern={scrollPattern} />
+          <ScrollGalleryMasonry pattern={scrollPattern} onImageClick={(idx) => setLightboxImage(mappedImages[idx])} />
         )}
 
         {/* Lightbox support for premium immersive view */}

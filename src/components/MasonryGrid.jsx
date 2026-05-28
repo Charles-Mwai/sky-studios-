@@ -10,8 +10,10 @@ export const MasonryGrid = ({ images, onImageClick }) => {
       const width = window.innerWidth;
       if (width < 640) {
         setColumnCount(2); // Mobile: 2 columns
+      } else if (width < 810) {
+        setColumnCount(3); // Tablet (iPad Air): 3 columns
       } else if (width < 1024) {
-        setColumnCount(3); // Tablet: 3 columns
+        setColumnCount(3); // Tablet (iPad): 3 columns with better spacing
       } else if (width < 1536) {
         setColumnCount(4); // Desktop: 4 columns
       } else {

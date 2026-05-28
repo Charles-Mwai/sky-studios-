@@ -64,7 +64,7 @@ export const Navbar = () => {
             : "py-6 bg-transparent"
         }`}
       >
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between">
           
           {/* Logo */}
           <Link to="/" className="group flex flex-col select-none">
@@ -144,13 +144,6 @@ export const Navbar = () => {
 
           {/* Action Call for Bookings & Mobile Hamburger */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link
-              to="/contact"
-              className="hidden sm:flex items-center border border-brand-accent/40 px-4 py-1.5 sm:px-5 sm:py-2 font-sans text-[9px] sm:text-[10px] tracking-widest uppercase rounded-[2px] text-brand-text hover:bg-brand-dark hover:text-brand-bg hover:border-brand-dark transition-all duration-500 ease-cinematic"
-            >
-              Get in touch
-            </Link>
-
             {/* Hamburger Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -173,6 +166,20 @@ export const Navbar = () => {
             variants={menuVariants}
             className="fixed inset-0 z-40 flex flex-col md:flex-row bg-brand-dark text-brand-bg overflow-y-auto"
           >
+            {/* Close Button */}
+            <motion.button
+              onClick={() => setIsOpen(false)}
+              variants={itemVariants}
+              className="fixed top-6 right-4 sm:right-6 z-50 flex items-center justify-center p-2 rounded-full hover:bg-brand-bg/10 transition-all duration-300 group"
+              aria-label="Close Navigation Menu"
+            >
+              <X 
+                size={24} 
+                className="text-brand-bg group-hover:text-brand-accent transition-colors duration-300"
+                strokeWidth={1.5}
+              />
+            </motion.button>
+
             {/* Main Links */}
             <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-20 py-24 md:py-12 border-b md:border-b-0 md:border-r border-brand-accent/10">
               <span className="font-sans text-[8px] sm:text-[10px] tracking-mega uppercase text-brand-accent mb-6 block opacity-60">

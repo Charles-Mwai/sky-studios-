@@ -115,50 +115,52 @@ export const Home = () => {
           </div>
         </section>
 
-        {/* Featured work — mobile: top-to-bottom order; desktop: 3-column masonry */}
-        <section className="py-4 sm:py-6 md:py-8 px-4 sm:px-5 md:px-8 max-w-8xl mx-auto">
-          <div className="flex flex-col gap-5 md:hidden">
+        {/* Featured work — mobile: vertical stack; tablet+: 3-column responsive masonry */}
+        <section className="py-4 sm:py-6 md:py-8 lg:py-10 px-4 sm:px-5 md:px-6 lg:px-8">
+          {/* Mobile: Vertical stack */}
+          <div className="flex flex-col gap-5 md:hidden max-w-8xl mx-auto">
             {featuredWorks.map((work) => (
               <FeaturedTile key={work.to + work.title} work={work} isMobile />
             ))}
           </div>
 
-          <div className="hidden md:flex flex-row items-start justify-center gap-6 lg:gap-8">
-            {/* Left column */}
-            <div className="flex flex-col">
-              <FeaturedTile work={colLeftTop}    width="330px" height="315px" />
-              <div style={{ marginTop: "56px" }}>
-                <FeaturedTile work={colLeftBottom} width="330px" height="315px" />
+          {/* Tablet and up: 3-column responsive layout */}
+          <div className="hidden md:block max-w-7xl mx-auto">
+            <div className="flex gap-4 lg:gap-6 items-start justify-center">
+              {/* Left column - 28% */}
+              <div className="flex flex-col gap-4 lg:gap-6 w-[28%]">
+                <FeaturedTile work={colLeftTop} width="100%" height="auto" />
+                <FeaturedTile work={colLeftBottom} width="100%" height="auto" />
               </div>
-            </div>
-            {/* Center column */}
-            <div>
-              <FeaturedTile work={colCenter} width="470px" height="750px" />
-            </div>
-            {/* Right column */}
-            <div className="flex flex-col">
-              <FeaturedTile work={colRightTop}    width="330px" height="315px" />
-              <div style={{ marginTop: "56px" }}>
-                <FeaturedTile work={colRightBottom} width="330px" height="315px" />
+
+              {/* Center column - 36% (larger on desktop) */}
+              <div className="w-[36%]">
+                <FeaturedTile work={colCenter} width="100%" height="auto" />
+              </div>
+
+              {/* Right column - 28% */}
+              <div className="flex flex-col gap-4 lg:gap-6 w-[28%]">
+                <FeaturedTile work={colRightTop} width="100%" height="auto" />
+                <FeaturedTile work={colRightBottom} width="100%" height="auto" />
               </div>
             </div>
           </div>
         </section>
 
         {/* Welcome / bio */}
-        <section className="py-10 sm:py-16 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 xl:gap-16 items-center">
+        <section className="py-10 sm:py-14 md:py-20 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-14 xl:gap-16 items-center">
             <div
-              className="border border-brand-accent/15 rounded-[2px] p-6 sm:p-10 md:p-12 flex flex-col gap-4 sm:gap-5 order-2 lg:order-1 items-start justify-center w-full lg:w-[570px] lg:h-[655px]"
+              className="border border-brand-accent/15 rounded-[2px] p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col gap-4 sm:gap-5 order-2 lg:order-1 items-start justify-center w-full lg:w-[570px] lg:h-[655px]"
               style={{ backgroundColor: "#bfc9c0" }}
             >
               <span className="font-sans text-[9px] sm:text-[10px] tracking-mega uppercase text-brand-accent text-left">
                 Helping brands since 2019
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-left">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-light text-brand-text leading-tight text-justify">
                 Welcome to Sky Studios Photography
               </h2>
-              <p className="font-sans text-[13px] sm:text-sm text-brand-muted leading-relaxed font-light text-left">
+              <p className="font-sans text-[13px] sm:text-sm md:text-base text-brand-muted leading-relaxed font-light text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
                 ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -170,8 +172,8 @@ export const Home = () => {
 
             <div className="flex justify-center items-center order-1 lg:order-2">
               <div
-                className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 bg-brand-bg shadow-sm w-full max-w-[320px] sm:max-w-[420px] lg:w-[570px] lg:max-w-none"
-                style={{ aspectRatio: "570 / 655" }}
+                className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 md:p-2.5 bg-brand-bg shadow-sm w-full max-w-[320px] sm:max-w-[420px] md:max-w-[480px] lg:w-[350px] lg:max-w-none"
+                style={{ aspectRatio: "2 / 3" }}
               >
                 <ViewfinderContainer
                   aspectRatio="aspect-[2/3]"
