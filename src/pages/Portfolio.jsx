@@ -29,8 +29,15 @@ const useIsDesktop = () => {
 };
 
 const CategoryCard = ({ category }) => {
-  const isDesktop = useIsDesktop();
+  const [isDesktop, setIsDesktop] = React.useState(() => window.innerWidth >= 1024);
+  
+  React.useEffect(() => {
+    const handler = () => setIsDesktop(window.innerWidth >= 1024);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
 
+  // Only apply offset on desktop (1024px+)
   const marginTop = isDesktop
     ? category.offset
       ? `calc(${category.staggerOffset || "0px"} + ${category.offset})`
@@ -38,13 +45,13 @@ const CategoryCard = ({ category }) => {
     : undefined;
 
   return (
-    <article className="flex flex-col w-full items-center md:items-start md:w-auto" style={{ marginTop }}>
+    <article className="flex flex-col w-full items-center md:items-start" style={{ marginTop }}>
       <Link
         to={`/portfolio/${category.id}`}
-        className="block overflow-hidden active:opacity-90 w-full max-w-[220px] md:w-[220px]"
+        className="block overflow-hidden active:opacity-90 w-full"
         aria-label={`View ${category.title} portfolio`}
       >
-        <div className="w-full max-w-[220px] md:w-[220px] h-[280px] sm:h-[330px] overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]">
+        <div className="w-full h-[280px] sm:h-[320px] md:h-[280px] overflow-hidden transition-transform duration-500 ease-out hover:scale-[1.02]">
           {category.image ? (
             <LazyImage src={category.image} alt={category.title} className="w-full h-full" />
           ) : (
@@ -57,10 +64,10 @@ const CategoryCard = ({ category }) => {
           )}
         </div>
       </Link>
-      <h2 className="mt-4">
+      <h2 className="mt-3 md:mt-4">
         <Link
           to={`/portfolio/${category.id}`}
-          className="font-sans text-xs tracking-[0.18em] uppercase text-brand-text hover:text-brand-accent transition-colors duration-300"
+          className="font-sans text-[10px] sm:text-xs md:text-xs tracking-[0.18em] uppercase text-brand-text hover:text-brand-accent transition-colors duration-300"
         >
           {category.title}
         </Link>
@@ -95,10 +102,10 @@ export const Portfolio = () => {
         <section className="relative pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-4 sm:px-6 md:px-8 lg:px-12">
           {/* Background block — desktop only */}
           <div
-            className="hidden md:block absolute left-0 w-full bottom-0"
+            className="hidden lg:block absolute left-0 w-full bottom-0"
             style={{ backgroundColor: "#bfc9c0", top: "210px" }}
           />
-          <div className="relative max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-x-[60px] gap-y-10 sm:gap-y-12 md:gap-y-[90px] justify-items-center">
+          <div className="relative max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-6 auto-rows-max">
             {CATEGORIES.map((cat) => (
               <CategoryCard key={cat.id} category={cat} />
             ))}
