@@ -10,7 +10,7 @@ const CATEGORIES = [
   { id: "fashion",        title: "Fashion",              exp: "02", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08097 (1).webp" },
   { id: "social-events",  title: "Social Events",        exp: "03", offset: "",       staggerOffset: "",      image: "/optimised/DSC08281.webp" },
   { id: "corporate",      title: "Corporate Events",     exp: "04", offset: "100px",  staggerOffset: "",      image: "/optimised/DSC08857.webp" },
-  { id: "family-sessions",title: "Family Sessions",      exp: "05", offset: "",       staggerOffset: "" },
+  { id: "family-sessions",title: "Family Sessions",      exp: "05", offset: "",       staggerOffset: "",      image: "/optimised/DSC05996.webp" },
   { id: "weddings",       title: "Weddings",             exp: "06", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_2529.webp" },
   { id: "product",        title: "Product",              exp: "07", offset: "",       staggerOffset: "110px", image: "/optimised/_901141.webp" },
   { id: "landscape",      title: "Wildlife & Landscape", exp: "08", offset: "-100px", staggerOffset: "110px", image: "/optimised/DSC_4043 (1).webp" },
