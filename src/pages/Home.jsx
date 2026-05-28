@@ -79,7 +79,7 @@ export const Home = () => {
     <PageTransition>
       <div className="bg-brand-bg text-brand-text min-h-screen overflow-x-hidden">
         {/* Hero */}
-        <section className="pt-24 pb-10 sm:pt-32 sm:pb-14 md:pt-40 md:pb-16 px-4 sm:px-6 md:px-12 flex flex-col items-center justify-center text-center">
+        <section className="pt-24 pb-10 sm:pt-32 sm:pb-14 md:pt-36 md:pb-14 lg:pt-40 lg:pb-16 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col items-center justify-center text-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center w-full">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
@@ -94,7 +94,7 @@ export const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif text-[1.75rem] leading-[1.15] sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-brand-text max-w-[min(100%,20rem)] sm:max-w-3xl text-balance px-1"
+              className="font-serif text-[1.75rem] leading-[1.15] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-brand-text max-w-[min(100%,20rem)] sm:max-w-3xl md:max-w-2xl text-balance px-1"
             >
               Subtle Beauty, Bold Impact
             </motion.h1>
@@ -172,7 +172,7 @@ export const Home = () => {
 
             <div className="flex justify-center items-center order-1 lg:order-2">
               <div
-                className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 md:p-2.5 bg-brand-bg shadow-sm w-full max-w-[320px] sm:max-w-[420px] md:max-w-[480px] lg:w-[350px] lg:max-w-none"
+                className="overflow-hidden rounded-full border border-brand-accent/30 p-1.5 sm:p-2 md:p-2 lg:p-2.5 bg-brand-bg shadow-sm w-full max-w-[320px] sm:max-w-[400px] md:max-w-[380px] lg:max-w-[420px]"
                 style={{ aspectRatio: "2 / 3" }}
               >
                 <ViewfinderContainer
@@ -188,7 +188,7 @@ export const Home = () => {
         </section>
 
         {/* Closing statement */}
-        <section className="py-12 sm:py-16 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 text-center border-t border-brand-accent/20">
+        <section className="py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 md:px-8 lg:px-12 text-center border-t border-brand-accent/20">
           <h2 className="font-serif text-[1.35rem] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-brand-text leading-snug sm:leading-tight text-balance max-w-[17rem] sm:max-w-2xl md:max-w-4xl mx-auto">
             Let&apos;s create photos that speak softly
           </h2>
